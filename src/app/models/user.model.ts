@@ -4,6 +4,7 @@ import { Course } from "./course.model";
 
 export class User {
   public id: number;
+  public active: boolean = true;
 
   constructor(
     public address: Address,
@@ -13,7 +14,6 @@ export class User {
     public surName: String,
     public nickName: String,
     public email: String,
-    public password: String,
-    public active: boolean
+    public password: String
   ) {}
 }

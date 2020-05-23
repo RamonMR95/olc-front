@@ -1,0 +1,84 @@
+<div class="py-5">
+    <div class="mat-elevation-z3">
+        <mat-horizontal-stepper labelPosition="bottom" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Fill out your Identity</ng-template>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Name</mat-label>
+                            <input matInput placeholder="First name" formControlName="nameCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field class="mx-5">
+                            <mat-label>Surname</mat-label>
+                            <input matInput placeholder="Last name" formControlName="surnameCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email" formControlName="emailCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field class="mx-5">
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password" placeholder="Password" formControlName="passwordCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Nickname</mat-label>
+                            <input matInput placeholder="Nickname" formControlName="nicknameCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button mat-button matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup" optional>
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Fill out your address</ng-template>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Street</mat-label>
+                            <input matInput formControlName="streetCtrl" placeholder="Ex. C/ Sanjuan de los bosques"
+                                required>
+                        </mat-form-field>
+                        <mat-form-field class="mx-5">
+                            <mat-label>City</mat-label>
+                            <input matInput formControlName="cityCtrl" placeholder="Ex. Murcia" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Province</mat-label>
+                            <input matInput formControlName="provinceCtrl" placeholder="Ex. Murcia" required>
+                        </mat-form-field>
+                        <mat-form-field class="mx-5">
+                            <mat-label>Postal Code</mat-label>
+                            <input matInput formControlName="zipCtrl" placeholder="Ex. 30000" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Country</mat-label>
+                            <input matInput formControlName="countryCtrl" placeholder="Ex. Spain" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext [disabled]="!secondFormGroup.valid">Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="registerUsers()">Register</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</div>

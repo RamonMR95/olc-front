@@ -1,5 +1,5 @@
 export class Role {
-  public id: number;
+  public id: number = 3;
 
   constructor() {}
 }
