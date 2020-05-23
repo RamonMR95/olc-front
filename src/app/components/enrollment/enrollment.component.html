@@ -1,0 +1,21 @@
+<mat-accordion>
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Tutor: Tutor name </mat-panel-title>
+      <mat-panel-description
+        >{{ course?.courseName }} - {{ course?.schedule }}
+      </mat-panel-description>
+      <div class="mx-5">
+        {{ course?.yearStart | date: "MM/dd/yy" }} /
+        {{ course?.yearEnd | date: "MM/dd/yy" }}
+      </div>
+    </mat-expansion-panel-header>
+    <p>Subject list</p>
+    <button class="float-right" mat-raised-button color="primary">
+      Enroll
+    </button>
+  </mat-expansion-panel>
+</mat-accordion>
