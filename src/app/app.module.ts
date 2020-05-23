@@ -11,10 +11,12 @@ import { MaterialModule } from './material.module';
 import { UsersComponent } from './components/users/users.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, NavbarComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialModule],
+  declarations: [AppComponent, UsersComponent, NavbarComponent, FooterComponent, RegisterComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialModule, ReactiveFormsModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
