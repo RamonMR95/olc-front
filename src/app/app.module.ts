@@ -14,6 +14,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from "./components/login/login.component";
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { RegisterComponent } from './components/register/register.component';
+import { EnrollmentComponent } from './components/enrollment/enrollment.component';
+import { EnrollmentListComponent } from './components/enrollment-list/enrollment-list.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     LoginModalComponent,
     RegisterComponent,
+    EnrollmentComponent,
+    EnrollmentListComponent
   ],
   imports: [
     BrowserModule,
