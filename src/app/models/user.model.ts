@@ -3,9 +3,9 @@ import { Role } from "./role.model";
 import { Course } from "./course.model";
 
 export class User {
-  public id: number;
   public active: boolean = true;
-
+  public id: number; 
+  
   constructor(
     public address: Address,
     public role: Role,
@@ -14,6 +14,9 @@ export class User {
     public surName: String,
     public nickName: String,
     public email: String,
-    public password: String
+    public password: String,
+    public birthDate?: Date,
+    public photo?: String,
+    public about?: String
   ) {}
 }
