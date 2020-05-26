@@ -1,0 +1,41 @@
+.rounded-mat-angular-img {
+  border-radius: 50%;
+  height: 100%;
+  width: 17%;
+}
+
+.fixed-bottom-margin {
+  margin-bottom: 35px;
+}
+
+.padding-border-card {
+  padding-left: 1em;
+  padding-bottom: 1em;
+  padding-top: 2.5em;
+}
+
+.padding-row-fix-box {
+    padding: 2em;
+}
+
+.margin-border-card {
+    margin-left: 1em;;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-right: 1rem;
+    padding-inline-end: 2em;
+    padding-block-start: inherit;
+    padding-block-end: unset;
+}
+
+.margin-left-mat-expansion-panel {
+  width: 205%;
+}
+
+.card-absoluted-position {
+  position: absolute;
+}
+
+.mat-end-button {
+    justify-content: flex-end;
+}

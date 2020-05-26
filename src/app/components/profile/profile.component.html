@@ -1,0 +1,151 @@
+<div class="py-3">
+    <div class="mat-elevation-z3">
+        <mat-tab-group animationDuration="500ms">
+            <mat-tab label="Personal Information">
+                <mat-card>
+                    <mat-card-title>
+                        <mat-card-content>
+                            <div class="row padding-row-fix-box">
+                                <div class="mx-auto">
+                                    <div class="mat-elevation-z1 padding-border-card">
+                                        <mat-card-content>
+                                            <form [formGroup]="form">
+                                                <div class="row mx-auto">
+                                                    <img mat-card-md-image class="rounded-mat-angular-img py-5 mx-2"
+                                                        src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/3c/3c24b890bfb497f5e9e8bfa2229dea86d9638d85_full.jpg">
+                                                    <div class="col col-sm-6 col-xl-6 col-lg-6 col-6 mx-auto">
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>Name</mat-label>
+                                                            <input matInput type="text" placeholder="Your Name *"
+                                                                formControlName="nameUser" />
+                                                        </mat-form-field>
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>Surname</mat-label>
+                                                            <input matInput type="text" placeholder="Your surname *"
+                                                                formControlName="surName" />
+                                                        </mat-form-field>
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>Email</mat-label>
+                                                            <input matInput type="text" placeholder="Your email *"
+                                                                formControlName="email" />
+                                                        </mat-form-field>
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>Nickname</mat-label>
+                                                            <input matInput type="text" placeholder="Your nickName *"
+                                                                formControlName="nickName" />
+                                                        </mat-form-field>
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>Password</mat-label>
+                                                            <input matInput type="password"
+                                                                required minlength="6"
+                                                                required maxlength="25"
+                                                                placeholder="Your password *"
+                                                                formControlName="passwordUsr" />
+                                                        </mat-form-field>
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>Date of birth</mat-label>
+                                                            <input matInput type="text"
+                                                                placeholder="Your Date of birth *"
+                                                                formControlName="birthday" />
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </mat-card-content>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card-title>
+                </mat-card>
+            </mat-tab>
+
+            <mat-tab label="Personal Address">
+                <mat-card>
+                    <mat-card-title>
+                        <mat-card-content>
+                            <div class="row padding-row-fix-box">
+                                <div class="mx-auto">
+                                    <div class="mat-elevation-z1 padding-border-card">
+                                        <mat-card-content>
+                                            <form [formGroup]="formAddress">
+                                                <div class="row mx-auto">
+                                                    <img mat-card-md-image class="rounded-mat-angular-img py-5 mx-2"
+                                                        src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/3c/3c24b890bfb497f5e9e8bfa2229dea86d9638d85_full.jpg">
+                                                    <div class="col col-sm-6 col-xl-6 col-lg-6 col-6 mx-auto">
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>Street</mat-label>
+                                                            <input matInput type="text" placeholder="Your street *"
+                                                                formControlName="street" />
+                                                        </mat-form-field>
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>City</mat-label>
+                                                            <input matInput type="text" placeholder="Your city *"
+                                                                formControlName="city" />
+                                                        </mat-form-field>
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>Province</mat-label>
+                                                            <input matInput type="text" placeholder="Your province *"
+                                                                formControlName="province" />
+                                                        </mat-form-field>
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>Zip</mat-label>
+                                                            <input matInput type="number" placeholder="Your zip *"
+                                                                formControlName="zip" />
+                                                        </mat-form-field>
+                                                        <mat-form-field class="margin-border-card">
+                                                            <mat-label>country</mat-label>
+                                                            <input matInput type="text" placeholder="Your country *"
+                                                                formControlName="country" />
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </mat-card-content>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card-title>
+                </mat-card>
+            </mat-tab>
+
+            <mat-tab label="Marks Course">
+                <mat-card>
+                    <mat-card-title>
+                        <mat-card-content>
+                            <app-marks-graph></app-marks-graph>
+                        </mat-card-content>
+                    </mat-card-title>
+                </mat-card>
+            </mat-tab>
+            <mat-tab label="My Course">
+                <mat-card>
+                    <mat-card-title>
+                        <mat-card-content>
+                            <div class="col-sm-8">
+                                <app-enrollment
+                                    class="info-personal-width padding-border-card margin-left-mat-expansion-panel"
+                                    [course]="course"></app-enrollment>
+                            </div>
+                        </mat-card-content>
+                    </mat-card-title>
+                </mat-card>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <div class="mat-end-button">
+        <button mat-raised-button color="primary" [hidden]="!activatedEdit"
+        class="hover-colors margin-border-card float-right" (click)="editProfile()">Edit</button>
+    </div>
+    <div >
+        <div class="mat-end-button">
+            <button mat-raised-button color="primary" [hidden]="activatedEdit" [disabled]="!form.valid || !formAddress.valid"
+            class="hover-colors margin-border-card float-right" (click)="updateProfile()" >Save</button>
+        </div>
+        <div class="mat-end-button">
+            <button mat-raised-button color="warn" [hidden]="activatedEdit"
+            class="hover-colors margin-border-card float-right" (click)="handleCancel()">Cancel</button>
+        </div>
+    </div>
+</div>
