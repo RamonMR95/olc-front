@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
       surnameCtrl: ["", Validators.required],
       emailCtrl: ["", [Validators.required, Validators.email]],
       passwordCtrl: ["", Validators.required],
+      birthDate: ["", Validators.required],
       nicknameCtrl: ["", Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
@@ -35,14 +36,18 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUsers() {
-    let newAdress: Address = new Address();
-    newAdress.id = null;
+    let newAdress: Address = new Address(
+      this.secondFormGroup.controls.streetCtrl.value,
+      this.secondFormGroup.controls.cityCtrl.value,
+      this.secondFormGroup.controls.provinceCtrl.value,
+      this.secondFormGroup.controls.zipCtrl.value,
+      this.secondFormGroup.controls.countryCtrl.value
+      );
 
     let newRole: Role = new Role()
 
     let newCourse: Course = new Course();
-    newCourse.id = null;
-
+    
     let newUser: User = new User(
       newAdress,
       newRole,
@@ -51,7 +56,8 @@ export class RegisterComponent implements OnInit {
       this.firstFormGroup.controls.surnameCtrl.value,
       this.firstFormGroup.controls.nicknameCtrl.value,
       this.firstFormGroup.controls.emailCtrl.value,
-      this.firstFormGroup.controls.passwordCtrl.value
+      this.firstFormGroup.controls.passwordCtrl.value,
+      this.firstFormGroup.controls.birthDate.value
     );
     
    // this.userService.createUser(newUser);
