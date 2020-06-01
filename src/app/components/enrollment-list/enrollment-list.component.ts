@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Course } from "src/app/models/course.model";
 import { CourseService } from "../../services/course.service";
-import { API_URL } from "src/app/config/config";
+import { Subject } from '../../models/subject.model';
+import { CourseSubject } from 'src/app/interfaces/course.subject.interface';
 
 @Component({
   selector: "app-enrollment-list",
@@ -10,6 +11,9 @@ import { API_URL } from "src/app/config/config";
 })
 export class EnrollmentListComponent implements OnInit {
   courses: Course[];
+  mentor: string;
+  subs: Subject[];
+  courseSubjects: CourseSubject[] = [];
 
   constructor(private courseService: CourseService) {}
 
@@ -17,10 +21,28 @@ export class EnrollmentListComponent implements OnInit {
     this.getCourses();
   }
 
-  getCourses(): void {
-    this.courseService.getCourses().then((crses) => {
+  getCourses() {
+    this.courseService.getCourses().then(async (crses) => {
       this.courses = crses;
-      console.log(crses)
+      for (let c of this.courses) {
+        await this.getSubjectsId(c);
+        await this.getMentor(c.id);
+        let cs = { course: c, subjects: this.subs, mentor: this.mentor}
+        this.courseSubjects.push(cs);
+        this.subs = []
+      }
+    }).catch(console.log);
+  }
+
+  getSubjectsId(course: Course) {
+    return this.courseService.getSubjectsId(course.id).then((subj) => {
+      this.subs = subj;
+    }).catch(console.log);
+  }
+
+  getMentor(courseId: number) {
+    return this.courseService.getMentor(courseId).then((mnt) => {
+      this.mentor = mnt.name;
     });
   }
 }
