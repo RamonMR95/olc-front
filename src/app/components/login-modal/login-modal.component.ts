@@ -10,11 +10,14 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["./login-modal.component.scss"],
 })
 export class LoginModalComponent implements OnInit {
-  form: FormGroup;
-  public dialogRef: MatDialogRef<LoginComponent>;
-  @Inject(MAT_DIALOG_DATA) public data: UserLogin;
+  public form: FormGroup;
+  private user: UserLogin;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<LoginComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: UserLogin
+  ) {}
 
   ngOnInit() {
     this.initForm();
@@ -22,8 +25,16 @@ export class LoginModalComponent implements OnInit {
 
   initForm(): void {
     this.form = this.fb.group({
-      email: ["", [Validators.required, Validators.email]],
-      password: [""],
+      email: ["ramonmr16@gmail.com", [Validators.required, Validators.email]],
+      password: ["123456"],
     });
+  }
+
+  getCredentials(): void {
+    this.user = {
+      username: this.form.controls.email.value,
+      password: this.form.controls.password.value,
+    };
+    this.dialogRef.close(this.user);
   }
 }
