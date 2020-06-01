@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoginService } from "../../services/login.service";
-import { UserLogin } from "../../interfaces/user.login.interface";
+import { UserLogin } from '../../interfaces/user.login.interface';
 import { MatDialog } from "@angular/material/dialog";
 import { LoginModalComponent } from "../login-modal/login-modal.component";
 
@@ -20,30 +20,37 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loginService.logout();
     this.openDialog();
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginModalComponent, {
       width: "500px",
+      data: {},
     });
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.login();
-    });
+    dialogRef.afterClosed().subscribe(
+      (data) => {
+        this.login(data);
+      },
+      (err) => {
+        console.log(err)
+        this.openDialog();
+      }
+    );
   }
 
-  login(): void {
-    // let user: UserLogin = {
-    //   email: this.form.controls.email.value,
-    //   password: this.form.controls.password.value,
-    // };
-    // this.loginService
-    //   .login(user)
-    //   .then(() => {
-    //     this.router.navigate(["/"]);
-    //   })
-    //   .catch((err) => {
-    //   });
+  login(user: UserLogin): void {
+    this.loginService
+      .authenticate(user)
+      .then((resp: any) => {
+        this.loginService.setLocalStorage(resp);
+        this.router.navigate(["/users"]);
+      })
+      .catch((err) => {
+        this.loginService.logout();
+        this.router.navigate(["/login"]);
+      });
   }
 }
