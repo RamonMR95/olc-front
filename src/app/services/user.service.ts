@@ -40,4 +40,8 @@ export class UserService {
     return this.httpClient.get<UserMarksSubjects>(`${API_URL}/users/marks?id=${id}&year_start=${date}`).toPromise();
   }
 
+  getMentorByCourseId(courseId: number): Promise<User> {
+    return this.httpClient.get<User>(`${API_URL}/users/mentor?course_id=${courseId}`).toPromise();
+  }
+
 }

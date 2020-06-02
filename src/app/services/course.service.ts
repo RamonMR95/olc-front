@@ -12,6 +12,10 @@ export class CourseService {
     return this.httpClient.get<any>(`${API_URL}/courses/list`).toPromise();
   }
 
+  getCoursesByUserId(userId: number): Promise<any> {
+    return this.httpClient.get<any>(`${API_URL}/courses/course?user_id=${userId}`).toPromise();
+  } 
+
   getMentor(courseId: number): Promise<any> {
     return this.httpClient
       .get<any>(`${API_URL}/users/mentor?course_id=${courseId}`)
