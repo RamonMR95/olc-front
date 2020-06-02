@@ -17,6 +17,10 @@ export class UserService {
     return this.httpClient.get<User>(`${API_URL}/users?id=${id}`).toPromise();
   }
 
+  getUserByEmail(email: string): Promise<User> {
+    return this.httpClient.get<User>(`${API_URL}/users/email?email=${email}`).toPromise();
+  }
+
   createUser(user: User): Promise<User> {
     return this.httpClient.post<User>(`${API_URL}/users/create`, user).toPromise();
   }

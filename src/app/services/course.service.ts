@@ -41,4 +41,8 @@ export class CourseService {
   getMentorAndCourse(): Promise<any> {
     return this.httpClient.get<any>(`${API_URL}/users/mentor/list`).toPromise();
   }
+
+  enroll(userId: number, courseId: number): Promise<any> {
+    return this.httpClient.get<any>(`${API_URL}/users/enroll?user_id=${userId}&course_id=${courseId}`).toPromise();
+  }
 }
