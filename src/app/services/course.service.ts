@@ -24,22 +24,8 @@ export class CourseService {
       .toPromise();
   }
 
-  getSubjects(): Promise<any> {
-    return this.httpClient
-      .get<any>(`${API_URL}/courses/course/subjects/list`)
-      .toPromise();
-  }
-
   getEnrollment(mentorId: number) {
     return this.httpClient.get<any>(`${API_URL}/courses/course/subjects?mentor_id=${mentorId}`).toPromise();
-  }
-
-  getCourseIdAndSubjects(): Promise<any> {
-    return this.httpClient.get<any>(`${API_URL}/courses/course/subjects/list`).toPromise();
-  }
-
-  getMentorAndCourse(): Promise<any> {
-    return this.httpClient.get<any>(`${API_URL}/users/mentor/list`).toPromise();
   }
 
   enroll(userId: number, courseId: number): Promise<any> {
