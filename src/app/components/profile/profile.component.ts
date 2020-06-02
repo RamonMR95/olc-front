@@ -9,6 +9,7 @@ import { Role } from "src/app/models/role.model";
 import { ActivatedRoute } from "@angular/router";
 import { RoleService } from "../../services/role.service";
 import Swal from "sweetalert2";
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: "app-profile",
@@ -20,38 +21,48 @@ export class ProfileComponent implements OnInit {
   public address: Address;
   public role: Role;
 
-  private activatedEdit: boolean = true;
-  private userUpdate: boolean = false;
-  private adddressUpdate: boolean = false;
+  private activatedEdit: boolean;
+  private userUpdate: boolean;
+  private adddressUpdate: boolean;
 
   public form: FormGroup;
   public formAddress: FormGroup;
 
-  @Input() course: Course;
+  public courseUsr: Course;
+  public mentor: User;
 
   constructor(
     private userService: UserService,
     private addressService: AddressService,
     private roleService: RoleService,
+    private courseService: CourseService,
     private route: ActivatedRoute,
     private fb: FormBuilder
   ) {}
 
   ngOnInit() {
+    this.activatedEdit= true;
+    this.userUpdate = false;
+    this.adddressUpdate = false;
     this.initForms();
     this.init();
   }
 
   private async init(): Promise<any> {
+    this.loadDataModal();
     await this.getData();
     this.loadData();
+
   }
 
   async getData(): Promise<any> {
+
     await Promise.all([
       this.getUserData(),
       this.getAddressData(),
       this.getRoleData(),
+      await this.getCourseData(),
+      this.getMentorByCourseId(this.courseUsr.id)
     ]);
   }
 
@@ -71,6 +82,16 @@ export class ProfileComponent implements OnInit {
     return this.roleService
       .getRole(this.route.snapshot.params.id)
       .then((rle) => (this.role = rle));
+  }
+
+  getCourseData(): Promise<any> {
+    return this.courseService
+      .getCoursesByUserId(this.route.snapshot.params.id)
+      .then(crsUrs => this.courseUsr = crsUrs[0]);
+  }
+
+  getMentorByCourseId(courseId: number): Promise<User> {
+    return this.userService.getMentorByCourseId(courseId).then(mnt => this.mentor = mnt);
   }
 
   private initForms() {
@@ -134,7 +155,7 @@ export class ProfileComponent implements OnInit {
     let newUser: User = new User(
       this.address,
       this.role,
-      this.course,
+      this.courseUsr,
       this.form.controls.nameUser.value,
       this.form.controls.surName.value,
       this.form.controls.nickName.value,
@@ -187,6 +208,7 @@ export class ProfileComponent implements OnInit {
   private loadData() {
     this.loadProfileData();
     this.loadAddressData();
+    Swal.close();
   }
 
   private loadProfileData() {
@@ -213,5 +235,21 @@ export class ProfileComponent implements OnInit {
         : (this.activatedEdit = false);
     this.initForms();
     this.loadData();
+  }
+
+  private loadDataModal() {
+    Swal.fire({
+      title: 'Loading data Profile',
+      text: 'We are get your profile data.',
+      padding: '12em',
+      width: 650,
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      background: 'rgba(255, 255, 255, 0.8)',
+      scrollbarPadding: false,
+      showConfirmButton: false,
+      position: "center"
+    });
+    Swal.showLoading();
   }
 }
