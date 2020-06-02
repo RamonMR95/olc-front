@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Course } from "src/app/models/course.model";
 import { CourseService } from "../../services/course.service";
-import { Subject } from "../../models/subject.model";
-import { CourseSubject } from "src/app/interfaces/course.subject.interface";
 import { Enrollment } from "../../models/enrollment.model";
 
 @Component({
@@ -20,7 +18,7 @@ export class EnrollmentListComponent implements OnInit {
     this.getEnrollment();
   }
 
-  getEnrollment() {
+  getEnrollment(): void {
     this.courseService.getCourses().then((crs) => {
       this.courses = crs;
       for (let i = 0; i < this.courses.length; i++) {
