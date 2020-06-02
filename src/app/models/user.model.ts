@@ -12,7 +12,6 @@ export class User {
     public course: Course,
     public name: String,
     public surName: String,
-    public nickName: String,
     public email: String,
     public password: String,
     public birthDate?: Date,

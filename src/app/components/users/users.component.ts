@@ -13,11 +13,9 @@ import { User } from "../../models/user.model";
 export class UsersComponent implements OnInit {
   displayedColumns: string[] = [
     "id",
-    "nickName",
     "name",
     "surName",
     "course",
-    "address",
     "role",
     "email",
   ];
