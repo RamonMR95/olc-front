@@ -30,7 +30,7 @@ export class CourseService {
       .toPromise();
   }
 
-  getCourseSubjectAndMentorByMentorId(mentorId: number) {
+  getEnrollment(mentorId: number) {
     return this.httpClient.get<any>(`${API_URL}/courses/course/subjects?mentor_id=${mentorId}`).toPromise();
   }
 
