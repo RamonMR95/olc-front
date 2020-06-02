@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { LoginComponent } from "../login/login.component";
 import { UserLogin } from "../../interfaces/user.login.interface";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-login-modal",
@@ -16,7 +17,8 @@ export class LoginModalComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<LoginComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: UserLogin
+    @Inject(MAT_DIALOG_DATA) public data: UserLogin,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -37,4 +39,10 @@ export class LoginModalComponent implements OnInit {
     };
     this.dialogRef.close(this.user);
   }
+
+  navigateToRegister(): void {
+    this.dialogRef.close(this.user);
+    this.router.navigate(["/register"]);
+  }
+
 }
