@@ -1,6 +1,6 @@
 import { Course } from "./course.model";
 
-export class enrollment {
+export class Enrollment {
   constructor(
     public mentor: string,
     public course: Course,

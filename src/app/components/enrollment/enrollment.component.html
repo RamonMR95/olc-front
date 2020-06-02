@@ -1,12 +1,12 @@
-<mat-accordion>
+<mat-accordion class="mx-2">
   <mat-expansion-panel
     (opened)="panelOpenState = true"
     (closed)="panelOpenState = false"
   >
     <mat-expansion-panel-header>
-      <mat-panel-title> Tutor: {{ courseSB?.mentor }}</mat-panel-title>
+      <mat-panel-title> Tutor: {{ courseSB?.mentor || "----"}}</mat-panel-title>
       <mat-panel-description
-        >{{ courseSB?.course?.courseName }} - {{ courseSB?.course?.schedule }}
+        >{{ courseSB?.course.courseName }} - {{ courseSB?.course.schedule }}
       </mat-panel-description>
       <div class="mx-5">
         {{ courseSB?.course.yearStart | date: "MM/dd/yy" }} /
@@ -14,7 +14,7 @@
       </div>
     </mat-expansion-panel-header>
     <p *ngFor="let s of courseSB?.subjects">{{ s }}</p>
-    <button class="float-right" mat-raised-button color="primary">
+    <button class="float-right" mat-raised-button color="primary" (click)="enroll(courseSB?.course.id)">
       Enroll
     </button>
   </mat-expansion-panel>
