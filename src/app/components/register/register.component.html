@@ -1,7 +1,7 @@
 <div class="py-5">
     <div class="mat-elevation-z3">
-        <mat-horizontal-stepper labelPosition="bottom" #stepper>
-            <mat-step [stepControl]="firstFormGroup">
+        <mat-horizontal-stepper labelPosition="bottom" [linear]="true" #stepper>
+            <mat-step [stepControl]="firstFormGroup" > 
                 <form [formGroup]="firstFormGroup">
                     <ng-template matStepLabel>Fill out your Identity</ng-template>
                     <div>
@@ -21,13 +21,21 @@
                         </mat-form-field>
                         <mat-form-field class="mx-5">
                             <mat-label>Password</mat-label>
-                            <input matInput type="password" placeholder="Password" formControlName="passwordCtrl" required>
+                            <input matInput type="password" placeholder="Password" formControlName="passwordCtrl"
+                                required>
                         </mat-form-field>
+
                     </div>
                     <div>
                         <mat-form-field>
                             <mat-label>Nickname</mat-label>
                             <input matInput placeholder="Nickname" formControlName="nicknameCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field class="mx-5">
+                            <mat-label>Date of Birth</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="birthDate" required />
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
                     </div>
                     <div>
@@ -35,9 +43,9 @@
                     </div>
                 </form>
             </mat-step>
-            <mat-step [stepControl]="secondFormGroup" optional>
+            <mat-step [stepControl]="secondFormGroup" [completed]="false">
                 <form [formGroup]="secondFormGroup">
-                    <ng-template matStepLabel>Fill out your address</ng-template>
+                    <ng-template matStepLabel >Fill out your address</ng-template>
                     <div>
                         <mat-form-field>
                             <mat-label>Street</mat-label>
@@ -72,11 +80,11 @@
                 </form>
             </mat-step>
             <mat-step>
-                <ng-template matStepLabel>Done</ng-template>
+                <ng-template matStepLabel >Done</ng-template>
                 <p>You are now done.</p>
                 <div>
                     <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button (click)="registerUsers()">Register</button>
+                    <button mat-button [disabled]="!secondFormGroup.valid && !firstFormGroup.valid" (click)="registerUsers()">Register</button>
                 </div>
             </mat-step>
         </mat-horizontal-stepper>
