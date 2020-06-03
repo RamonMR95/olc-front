@@ -7,13 +7,13 @@ export class User {
   public id: number; 
   
   constructor(
-    public address: Address,
-    public role: Role,
-    public course: Course,
-    public name: String,
-    public surName: String,
-    public email: String,
-    public password: String,
+    public address?: Address,
+    public role?: Role,
+    public course?: Course,
+    public name?: String,
+    public surName?: String,
+    public email?: String,
+    public password?: String,
     public birthDate?: Date,
     public photo?: String,
     public about?: String
