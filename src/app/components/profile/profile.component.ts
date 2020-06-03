@@ -214,7 +214,6 @@ export class ProfileComponent implements OnInit {
   private loadProfileData() {
     this.form.controls.nameUser.setValue(this.user.name);
     this.form.controls.surName.setValue(this.user.surName);
-    this.form.controls.nickName.setValue(this.user.nickName);
     this.form.controls.email.setValue(this.user.email);
     this.form.controls.passwordUsr.setValue(this.user.password);
     this.form.controls.birthday.setValue(this.user.birthDate);
