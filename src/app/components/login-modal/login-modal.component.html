@@ -31,8 +31,16 @@
     >
       Login
     </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="navigateToRegister();"
+      class="mx-2"
+    >
+      Register
+    </button>
   </div>
   <div class="py-3">
-    <a routerLink="/register" [mat-dialog-close]="false">Forget Password?</a>
+    <a routerLink="/recoverpw" [mat-dialog-close]="false">Forget Password?</a>
   </div>
 </form>

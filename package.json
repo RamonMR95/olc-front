@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.0.0",
-    "@angular/cdk": "~8.2.3",
+    "@angular/cdk": "^8.2.3",
     "@angular/common": "~8.0.0",
     "@angular/compiler": "~8.0.0",
     "@angular/core": "~8.0.0",
@@ -23,8 +23,11 @@
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
     "@ng-bootstrap/ng-bootstrap": "^5.3.1",
+    "chartjs-plugin-annotation": "^0.5.7",
     "hammerjs": "^2.0.8",
+    "ng2-charts": "^2.3.2",
     "rxjs": "~6.4.0",
+    "sweetalert2": "^9.13.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1",
     "firebase": ">= 5.5.7 <8"

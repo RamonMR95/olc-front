@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoginService } from "../../services/login.service";
-import { UserLogin } from '../../interfaces/user.login.interface';
+import { UserLogin } from "../../interfaces/user.login.interface";
 import { MatDialog } from "@angular/material/dialog";
 import { LoginModalComponent } from "../login-modal/login-modal.component";
 
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
     const dialogRef = this.dialog.open(LoginModalComponent, {
       width: "500px",
       data: {},
+      disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe(
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.login(data);
       },
       (err) => {
-        console.log(err)
+        console.log(err);
         this.openDialog();
       }
     );
@@ -50,7 +51,9 @@ export class LoginComponent implements OnInit {
       })
       .catch((err) => {
         this.loginService.logout();
-        this.router.navigate(["/login"]);
+        this.router.url.replace("/", "") === "register"
+          ? this.router.navigate(["/register"])
+          : this.router.navigate(["/login"]);
       });
   }
 }
