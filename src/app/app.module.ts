@@ -23,6 +23,8 @@ import { EnrollmentListComponent } from "./components/enrollment-list/enrollment
 import { ExamComponent } from './components/exam/exam.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { environment } from 'src/environments/environment';
+import { UtilModule } from './utils/marks-graph/util.module';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +34,12 @@ import { environment } from 'src/environments/environment';
     FooterComponent,
     LoginComponent,
     LoginModalComponent,
+    ProfileComponent,
     RegisterComponent,
     EnrollmentComponent,
     EnrollmentListComponent,
     ExamComponent,
-    UploadComponent
+    UploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    UtilModule
   ],
   entryComponents: [LoginModalComponent],
   providers: [
