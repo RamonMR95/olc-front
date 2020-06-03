@@ -6,6 +6,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 
@@ -18,6 +20,9 @@ import { LoginModalComponent } from "./components/login-modal/login-modal.compon
 import { RegisterComponent } from "./components/register/register.component";
 import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 import { EnrollmentListComponent } from "./components/enrollment-list/enrollment-list.component";
+import { ExamComponent } from './components/exam/exam.component';
+import { UploadComponent } from './components/upload/upload.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,8 @@ import { EnrollmentListComponent } from "./components/enrollment-list/enrollment
     RegisterComponent,
     EnrollmentComponent,
     EnrollmentListComponent,
+    ExamComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,8 @@ import { EnrollmentListComponent } from "./components/enrollment-list/enrollment
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   entryComponents: [LoginModalComponent],
   providers: [

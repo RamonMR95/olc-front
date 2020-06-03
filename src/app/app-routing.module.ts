@@ -6,6 +6,8 @@ import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { EnrollmentListComponent } from "./components/enrollment-list/enrollment-list.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { ExamComponent } from './components/exam/exam.component';
+import { UploadComponent } from './components/upload/upload.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/users", pathMatch: "full" },
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "enrollment", component: EnrollmentListComponent, canActivate: [AuthGuard]  },
+  { path: "exam/:id", component: ExamComponent },
+  { path: "upload", component: UploadComponent }
 ];
 
 @NgModule({

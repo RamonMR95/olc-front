@@ -2,8 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { UserLogin } from "../interfaces/user.login.interface";
 import { API_URL } from "../config/config";
-import { Observable } from "rxjs";
-import { tap } from "rxjs/operators";
 import { JwtData } from '../interfaces/jwt.data.interface';
 
 @Injectable({
