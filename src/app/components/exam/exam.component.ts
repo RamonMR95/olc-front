@@ -19,6 +19,7 @@ export class ExamComponent implements OnInit {
   questions: QuestionAnswer[] = [];
   selected: Array<any> = new Array(5);
   correctAnswers: number = 0;
+  userId: number;
 
   constructor(
     private examService: ExamService,
@@ -29,6 +30,7 @@ export class ExamComponent implements OnInit {
 
   ngOnInit() {
     this.examId = this.route.snapshot.params.id;
+    this.userId = parseInt(localStorage.getItem("id"));
     this.getQuestionsAndAnswers(this.examId);
   }
 
@@ -62,12 +64,10 @@ export class ExamComponent implements OnInit {
 
   createExam(): void {
     let usr = new User();
-    // usr.id = parseInt(localStorage.getItem("id"));
-    usr.id = 1;
+    usr.id = this.userId;
     let exam = new Exam();
     exam.id = this.examId;
     let userExam = new UserExam(usr, exam, this.correctAnswers, new Date());
-    console.log(userExam)
     this.examService.submitExam(userExam);
   }
 
@@ -84,7 +84,7 @@ export class ExamComponent implements OnInit {
       if (result.value) {
         Swal.fire("Submited!", "Your exam has been submitted.", "success");
         this.submitExam();
-        this.router.navigate(["/profile/", 1]);
+        this.router.navigate(["/profile/", this.userId]);
       }
     });
   }

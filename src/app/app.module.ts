@@ -21,10 +21,10 @@ import { RegisterComponent } from "./components/register/register.component";
 import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 import { EnrollmentListComponent } from "./components/enrollment-list/enrollment-list.component";
 import { ExamComponent } from './components/exam/exam.component';
-import { UploadComponent } from './components/upload/upload.component';
 import { environment } from 'src/environments/environment';
-import { UtilModule } from './utils/marks-graph/util.module';
+import { UtilModule } from './utils/util.module';
 import { ProfileComponent } from './components/profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -38,8 +38,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     EnrollmentComponent,
     EnrollmentListComponent,
-    ExamComponent,
-    UploadComponent,
+    ExamComponent
   ],
   imports: [
     BrowserModule,
