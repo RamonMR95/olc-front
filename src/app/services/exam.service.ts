@@ -27,4 +27,10 @@ export class ExamService {
     .toPromise();
   }
 
+  getUserExamByUserId(userId: number, examId: number): Promise<any> {
+    return this.httpClient
+    .get<any>(`${API_URL}/user-exam/exam?user_id=${userId}&exam_id=${examId}`)
+    .toPromise();
+  }
+
 }
