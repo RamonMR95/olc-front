@@ -44,11 +44,11 @@ export class ExamGuard implements CanActivate {
       this.examService
         .getUserExamByUserId(this.userId, this.examId)
         .then((_) => {
-          resolve(true);
-        })
-        .catch((_) => {
           this.router.navigate(["/profile/", this.userId]);
           resolve(false);
+        })
+        .catch((_) => {
+          resolve(true);
         });
     });
   }
