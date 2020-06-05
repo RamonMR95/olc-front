@@ -1,0 +1,41 @@
+.custom-hover:hover {
+  background-color: rgba($color: grey, $alpha: 0.4) !important;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+}
+
+.custom-div-data {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-shadow: 1px 1px 4px black;
+  padding: 0.5em;
+  margin-top: 1em;
+  margin-right: 2.5em;
+  margin-left: 0.25em;
+  font-size: 1.5em;
+  font-family: "Times New Roman", Times, serif;
+  font-size-adjust: inherit;
+}
+
+.custom-div-active:active {
+  box-shadow: 0 2px rgba($color: grey, $alpha: 0.5);
+  transition: all 0.2s ease;
+  transform: translateY(2px) !important;
+}
+
+.fixed-margin-left {
+  margin-left: 3em;
+}
+
+.custom-font-text {
+    font-size-adjust: inherit;
+    font-size: 2em;
+    font-family: "Times New Roman", Times, serif;
+    text-shadow: 1px 1px 4px black;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
