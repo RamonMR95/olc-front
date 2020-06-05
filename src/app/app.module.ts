@@ -26,6 +26,8 @@ import { ExamComponent } from './components/exam/exam.component';
 import { environment } from 'src/environments/environment';
 import { UtilModule } from './utils/util.module';
 import { ProfileComponent } from './components/profile/profile.component';
+import { TopicComponent } from './components/topic/topic.component';
+import { TopicContentComponent } from './components/topic-content/topic-content.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     EnrollmentComponent,
     EnrollmentListComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    TopicComponent,
+    TopicContentComponent,
     ExamComponent
   ],
   imports: [

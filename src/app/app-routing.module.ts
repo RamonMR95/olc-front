@@ -10,6 +10,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { ExamComponent } from './components/exam/exam.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ExamGuard } from './guards/exam.guard';
+import { TopicComponent } from './components/topic/topic.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/users", pathMatch: "full" },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: "enrollment", component: EnrollmentListComponent, canActivate: [AuthGuard] },
   { path: "course/:id", component: SubjectsComponent, canActivate: [AuthGuard] },
   { path: "exam/:id", component: ExamComponent, canActivate: [AuthGuard, ExamGuard] },
+  { path: "subject/:name/themes", component: TopicComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent }
 ];
