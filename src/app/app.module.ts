@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
+import { environment } from 'src/environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -9,6 +10,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { UtilModule } from './utils/util.module';
 
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 
@@ -23,12 +25,11 @@ import { EnrollmentComponent } from './components/enrollment/enrollment.componen
 import { EnrollmentListComponent } from "./components/enrollment-list/enrollment-list.component";
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { ExamComponent } from './components/exam/exam.component';
-import { environment } from 'src/environments/environment';
-import { UtilModule } from './utils/util.module';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TopicComponent } from './components/topic/topic.component';
 import { TopicContentComponent } from './components/topic-content/topic-content.component';
-
+import { HomeComponent } from './components/home/home.component';
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,9 @@ import { TopicContentComponent } from './components/topic-content/topic-content.
     SubjectsComponent,
     TopicComponent,
     TopicContentComponent,
-    ExamComponent
+    ExamComponent,
+    HomeComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
