@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "olc-front",
+      "public": "dist/olc-front",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

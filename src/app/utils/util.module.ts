@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ChartsModule } from 'ng2-charts';
 
-import { MarksGraphComponent } from './marks-graph.component';
+import { MarksGraphComponent } from './marks-graph/marks-graph.component';
+import { UploadComponent } from './upload/upload.component';
 
 
 @NgModule({
     declarations: [
-        MarksGraphComponent
+        MarksGraphComponent,
+        UploadComponent
     ],
     imports: [
       BrowserModule,
@@ -16,7 +18,8 @@ import { MarksGraphComponent } from './marks-graph.component';
       ChartsModule
     ],
     exports: [
-        MarksGraphComponent
+        MarksGraphComponent,
+        UploadComponent
     ],
     providers: [],
   })

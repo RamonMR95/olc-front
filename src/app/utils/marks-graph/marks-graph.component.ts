@@ -25,6 +25,7 @@ export class MarksGraphComponent implements OnInit {
 
   ngOnInit() {
     this.getDataStudent(1,'1992-09-07');
+    this.getDataStudent(1,'1992/09/07');
   }
 
   async getDataStudent(id: number, date: string) {
