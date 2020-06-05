@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
+import { environment } from 'src/environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -8,6 +9,7 @@ import { MaterialModule } from "./material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { UtilModule } from './utils/util.module';
 
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 
@@ -21,9 +23,9 @@ import { RegisterComponent } from "./components/register/register.component";
 import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 import { EnrollmentListComponent } from "./components/enrollment-list/enrollment-list.component";
 import { ExamComponent } from './components/exam/exam.component';
-import { environment } from 'src/environments/environment';
-import { UtilModule } from './utils/util.module';
 import { ProfileComponent } from './components/profile/profile.component';
+import { HomeComponent } from './components/home/home.component';
+import { NewsComponent } from './components/news/news.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     EnrollmentComponent,
     EnrollmentListComponent,
-    ExamComponent
+    ExamComponent,
+    HomeComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
