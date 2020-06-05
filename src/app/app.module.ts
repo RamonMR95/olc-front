@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material.module";
 import { UtilModule } from './utils/marks-graph/util.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 
@@ -21,6 +22,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from "./components/register/register.component";
 import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 import { EnrollmentListComponent } from "./components/enrollment-list/enrollment-list.component";
+import { SubjectsComponent } from './components/subjects/subjects.component';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { EnrollmentListComponent } from "./components/enrollment-list/enrollment
     LoginModalComponent,
     RegisterComponent,
     EnrollmentComponent,
-    EnrollmentListComponent
+    EnrollmentListComponent,
+    SubjectsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { EnrollmentListComponent } from "./components/enrollment-list/enrollment
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     UtilModule
   ],
   entryComponents: [LoginModalComponent],
