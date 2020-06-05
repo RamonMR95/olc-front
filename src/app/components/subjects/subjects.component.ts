@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { SubjectService } from "src/app/services/subject.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-subjects",
@@ -10,7 +10,8 @@ import { ActivatedRoute } from "@angular/router";
 export class SubjectsComponent implements OnInit {
   constructor(
     private subjectService: SubjectService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   private subjectsName: string[] = [];
@@ -39,8 +40,8 @@ export class SubjectsComponent implements OnInit {
       : (this.exitsSubjects = false);
   }
 
-  handlerToSubject(nameSbj: string) {
-    
+  public handlerToSubject(nameSbj: string) {
+    this.router.navigate(["subject/",nameSbj.toLowerCase(),"themes"]);
   }
 
 }
