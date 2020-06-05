@@ -19,6 +19,7 @@ export class LoginService {
   }
 
   setLocalStorage(data: JwtData): void {
+    localStorage.setItem("id", data.id);
     localStorage.setItem("token", data.token);
     localStorage.setItem("id", data.id);
     localStorage.setItem("email", data.email);
@@ -27,6 +28,7 @@ export class LoginService {
   }
 
   logout(): void {
+    localStorage.removeItem("id");
     localStorage.removeItem("token");
     localStorage.removeItem("id");
     localStorage.removeItem("email");

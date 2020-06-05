@@ -24,14 +24,15 @@ export class MarksGraphComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
+    this.getDataStudent(1,'1992-09-07');
     this.getDataStudent(1,'1992/09/07');
   }
 
-  getDataStudent(id: number,date: string) {
+  async getDataStudent(id: number, date: string) {
     var json_data = {};
     var resultSubjects = [];
         
-    this.userService.getUserMarksByIdAndDate(id, date).then(res => {
+   await this.userService.getUserMarksByIdAndDate(id, date).then(res => {
       json_data = res;
       for(var i in json_data) {
         resultSubjects.push(i);
@@ -137,7 +138,6 @@ export class MarksGraphComponent implements OnInit {
 
   public changeLabel() {
     this.lineChartLabels[2] = ["1st Line", "2nd Line"];
-    //this.chart.update();
   }
 
   getAvg(): void {

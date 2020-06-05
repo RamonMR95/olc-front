@@ -1,6 +1,6 @@
 export interface JwtData {
-    token: string;
     id: string;
+    token: string;
     email: string;
     role: string;
     exp: string;

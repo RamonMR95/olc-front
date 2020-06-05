@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { CourseSubject } from "../../interfaces/course.subject.interface";
-import { UserService } from '../../services/user.service';
-import { CourseService } from '../../services/course.service';
+import { UserService } from "../../services/user.service";
+import { CourseService } from "../../services/course.service";
 
 @Component({
   selector: "app-enrollment",
@@ -11,7 +11,10 @@ import { CourseService } from '../../services/course.service';
 export class EnrollmentComponent implements OnInit {
   @Input() courseSB: CourseSubject;
 
-  constructor(private userService: UserService, private courseService: CourseService) {}
+  constructor(
+    private userService: UserService,
+    private courseService: CourseService
+  ) {}
 
   ngOnInit() {}
 
@@ -19,7 +22,7 @@ export class EnrollmentComponent implements OnInit {
     let email = localStorage.getItem("email");
     if (email) {
       this.userService.getUserByEmail(email).then((usr) => {
-        this.courseService.enroll(usr.id, courseId).then(_ => console.log("Enrolled"));
+        this.courseService.enroll(usr.id, courseId);
       });
     }
   }

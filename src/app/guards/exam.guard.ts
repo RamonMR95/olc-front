@@ -8,9 +8,6 @@ import {
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { ExamService } from "../services/exam.service";
-import { catchError } from "rxjs/operators";
-import { HttpErrorResponse } from "@angular/common/http";
-import { resolve } from "url";
 import { Router } from "@angular/router";
 
 @Injectable({

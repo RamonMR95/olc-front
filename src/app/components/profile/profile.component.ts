@@ -9,7 +9,7 @@ import { Role } from "src/app/models/role.model";
 import { ActivatedRoute } from "@angular/router";
 import { RoleService } from "../../services/role.service";
 import Swal from "sweetalert2";
-import { CourseService } from '../../services/course.service';
+import { CourseService } from "../../services/course.service";
 
 @Component({
   selector: "app-profile",
@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedEdit= true;
+    this.activatedEdit = true;
     this.userUpdate = false;
     this.adddressUpdate = false;
     this.initForms();
@@ -52,17 +52,15 @@ export class ProfileComponent implements OnInit {
     this.loadDataModal();
     await this.getData();
     this.loadData();
-
   }
 
   async getData(): Promise<any> {
-
     await Promise.all([
       this.getUserData(),
       this.getAddressData(),
       this.getRoleData(),
       await this.getCourseData(),
-      this.getMentorByCourseId(this.courseUsr.id)
+      this.getMentorByCourseId(this.courseUsr.id),
     ]);
   }
 
@@ -87,11 +85,13 @@ export class ProfileComponent implements OnInit {
   getCourseData(): Promise<any> {
     return this.courseService
       .getCoursesByUserId(this.route.snapshot.params.id)
-      .then(crsUrs => this.courseUsr = crsUrs[0]);
+      .then((crsUrs) => (this.courseUsr = crsUrs[0]));
   }
 
   getMentorByCourseId(courseId: number): Promise<User> {
-    return this.userService.getMentorByCourseId(courseId).then(mnt => this.mentor = mnt);
+    return this.userService
+      .getMentorByCourseId(courseId)
+      .then((mnt) => (this.mentor = mnt));
   }
 
   private initForms() {
@@ -101,10 +101,6 @@ export class ProfileComponent implements OnInit {
         Validators.required,
       ],
       surName: [
-        { value: "", disabled: this.activatedEdit },
-        Validators.required,
-      ],
-      nickName: [
         { value: "", disabled: this.activatedEdit },
         Validators.required,
       ],
@@ -158,7 +154,6 @@ export class ProfileComponent implements OnInit {
       this.courseUsr,
       this.form.controls.nameUser.value,
       this.form.controls.surName.value,
-      this.form.controls.nickName.value,
       this.form.controls.email.value,
       this.form.controls.passwordUsr.value
     );
@@ -238,16 +233,16 @@ export class ProfileComponent implements OnInit {
 
   private loadDataModal() {
     Swal.fire({
-      title: 'Loading data Profile',
-      text: 'We are get your profile data.',
-      padding: '12em',
+      title: "Loading data Profile",
+      text: "We are get your profile data.",
+      padding: "12em",
       width: 650,
       allowEscapeKey: false,
       allowOutsideClick: false,
-      background: 'rgba(255, 255, 255, 0.8)',
+      background: "rgba(255, 255, 255, 0.8)",
       scrollbarPadding: false,
       showConfirmButton: false,
-      position: "center"
+      position: "center",
     });
     Swal.showLoading();
   }

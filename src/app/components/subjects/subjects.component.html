@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-title fxLayoutAlign="center center" fxLayout="column" class="py-2 custom-font-text "
+    >Name Of Course
+    <div class="py-2 fixed-margin-left ">
+      <mat-card-content
+        fxFlex="100"
+        fxLayoutAlign="center baseline"
+        *ngFor="let sbj of subjectsName; let i = index"
+        [ngStyle]="{ fxLayout: i % 2 == 0 ? 'column' : 'row' }"
+        class="custom-div-data custom-hover custom-div-active custom-font-text "
+        (click)="handlerToSubject(sbj)" 
+      >
+        <div *ngIf="!subjectsName.isEmpty" >{{ sbj }}</div>
+      </mat-card-content>
+      <div *ngIf="exitsSubjects == false" class="py-2 ">
+        This course doesn't has any assigned subjects
+      </div>
+    </div>
+  </mat-card-title>
+</mat-card>

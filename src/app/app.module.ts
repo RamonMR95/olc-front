@@ -7,6 +7,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { UtilModule } from './utils/util.module';
@@ -22,11 +23,13 @@ import { LoginModalComponent } from "./components/login-modal/login-modal.compon
 import { RegisterComponent } from "./components/register/register.component";
 import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 import { EnrollmentListComponent } from "./components/enrollment-list/enrollment-list.component";
+import { SubjectsComponent } from './components/subjects/subjects.component';
 import { ExamComponent } from './components/exam/exam.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { TopicComponent } from './components/topic/topic.component';
+import { TopicContentComponent } from './components/topic-content/topic-content.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsComponent } from './components/news/news.component';
-
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { NewsComponent } from './components/news/news.component';
     RegisterComponent,
     EnrollmentComponent,
     EnrollmentListComponent,
+    SubjectsComponent,
+    TopicComponent,
+    TopicContentComponent,
     ExamComponent,
     HomeComponent,
     NewsComponent
@@ -52,6 +58,7 @@ import { NewsComponent } from './components/news/news.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     UtilModule
