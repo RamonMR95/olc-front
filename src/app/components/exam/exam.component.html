@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title>Exam {{ exam }}</mat-card-title>
+  <mat-card-content>
+    <mat-card *ngFor="let q of questions; let qind = index">
+      <mat-card-title>{{ qind + 1 }} - {{ q.question.name }}</mat-card-title>
+      <mat-radio-group [(ngModel)]="selected[qind]">
+        <mat-radio-button
+          *ngFor="let ans of q.answers; let i = index"
+          class="col"
+          [value]="ans"
+          >{{ ans.answer }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </mat-card>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      class="mx-2"
+      color="primary"
+      (click)="confirmSubmit()"
+    >
+      Submit
+    </button>
+  </mat-card-actions>
+</mat-card>

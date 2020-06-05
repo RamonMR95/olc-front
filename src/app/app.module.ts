@@ -1,13 +1,13 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material.module";
-import { UtilModule } from './utils/marks-graph/util.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 
@@ -17,10 +17,13 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { LoginComponent } from "./components/login/login.component";
 import { LoginModalComponent } from "./components/login-modal/login-modal.component";
-import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from "./components/register/register.component";
 import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 import { EnrollmentListComponent } from "./components/enrollment-list/enrollment-list.component";
+import { ExamComponent } from './components/exam/exam.component';
+import { environment } from 'src/environments/environment';
+import { UtilModule } from './utils/util.module';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -30,11 +33,12 @@ import { EnrollmentListComponent } from "./components/enrollment-list/enrollment
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    ProfileComponent,
     LoginModalComponent,
+    ProfileComponent,
     RegisterComponent,
     EnrollmentComponent,
-    EnrollmentListComponent
+    EnrollmentListComponent,
+    ExamComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,8 @@ import { EnrollmentListComponent } from "./components/enrollment-list/enrollment
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
     UtilModule
   ],
   entryComponents: [LoginModalComponent],

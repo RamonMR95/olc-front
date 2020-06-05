@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "olc-imgs": {
+      "hosting": {
+        "olc-front": [
+          "olc-imgs"
+        ]
+      }
+    }
+  }
+}
