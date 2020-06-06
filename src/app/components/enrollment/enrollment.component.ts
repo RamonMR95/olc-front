@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { CourseSubject } from "../../interfaces/course.subject.interface";
 import { UserService } from "../../services/user.service";
 import { CourseService } from "../../services/course.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: "app-enrollment",
@@ -22,7 +23,20 @@ export class EnrollmentComponent implements OnInit {
     let email = localStorage.getItem("email");
     if (email) {
       this.userService.getUserByEmail(email).then((usr) => {
-        this.courseService.enroll(usr.id, courseId);
+        this.courseService.enroll(usr.id, courseId).then(_ => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Enrollment...',
+            text: 'You have been enrolled to the course!'
+          })
+        })
+        .catch(_ => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "You cannot enroll to the course",
+          })
+        });
       });
     }
   }
