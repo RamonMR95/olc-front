@@ -21,6 +21,7 @@ export class UsersComponent implements OnInit {
   ];
   dataSource: MatTableDataSource<User>;
   users: User[];
+  currUser: User;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -28,7 +29,7 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.getUsers();
+    this.getCourse();
   }
 
   applyFilter(event: Event) {
@@ -40,8 +41,17 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  getUsers(): void {
-    this.userService.getUsers().then((usrs) => {
+  getCourse(): void {
+    let email = localStorage.getItem("email");
+    if (email) {
+      this.userService.getUserByEmail(email).then(usr => {
+        this.getUsers(usr);
+      });
+    }
+  }
+
+  getUsers(user: User): void {
+    this.userService.getUsersByMentorId(user.course.id).then((usrs) => {
       this.users = usrs;
       this.dataSource = new MatTableDataSource(this.users);
       this.dataSource.paginator = this.paginator;
