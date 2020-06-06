@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       .authenticate(user)
       .then((resp: any) => {
         this.loginService.setLocalStorage(resp);
-        this.router.navigate(["/users"]);
+        this.router.navigate(["/home"]);
       })
       .catch((err) => {
         this.loginService.logout();

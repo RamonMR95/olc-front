@@ -12,9 +12,16 @@
                       <form [formGroup]="form">
                         <div class="row mx-auto">
                           <img
+                          mat-card-md-image
+                          *ngIf="user?.photo"
+                          class="rounded-mat-angular-img py-5 mx-2"
+                          [src]="user?.photo"
+                        />
+                          <img
                             mat-card-md-image
+                            *ngIf="!user?.photo"
                             class="rounded-mat-angular-img py-5 mx-2"
-                            src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/3c/3c24b890bfb497f5e9e8bfa2229dea86d9638d85_full.jpg"
+                            src="https://firebasestorage.googleapis.com/v0/b/olc-imgs.appspot.com/o/images%2Fdefault.png?alt=media&token=05a496ca-1c9f-4d27-bd57-eca95fed766f"
                           />
                           <div
                             class="col col-sm-6 col-xl-6 col-lg-6 col-6 mx-auto"
@@ -89,11 +96,18 @@
                   <div class="mat-elevation-z1 padding-border-card">
                     <mat-card-content>
                       <form [formGroup]="formAddress">
-                        <div class="row mx-auto">
+                        <div class="row mx-auto">                          
+                          <img
+                          mat-card-md-image
+                          *ngIf="user?.photo"
+                          class="rounded-mat-angular-img py-5 mx-2"
+                          [src]="user?.photo"
+                        />
                           <img
                             mat-card-md-image
+                            *ngIf="!user?.photo"
                             class="rounded-mat-angular-img py-5 mx-2"
-                            src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/3c/3c24b890bfb497f5e9e8bfa2229dea86d9638d85_full.jpg"
+                            src="https://firebasestorage.googleapis.com/v0/b/olc-imgs.appspot.com/o/images%2Fdefault.png?alt=media&token=05a496ca-1c9f-4d27-bd57-eca95fed766f"
                           />
                           <div
                             class="col col-sm-6 col-xl-6 col-lg-6 col-6 mx-auto"
@@ -155,7 +169,7 @@
         </mat-card>
       </mat-tab>
 
-      <mat-tab label="Marks Course">
+      <mat-tab *ngIf="seeMarks" label="Marks Course">
         <mat-card>
           <mat-card-title>
             <mat-card-content>
@@ -194,6 +208,7 @@
     <button
       mat-raised-button
       color="primary"
+      *ngIf="seeMarks"
       [hidden]="!activatedEdit"
       class="hover-colors margin-border-card float-right"
       (click)="editProfile()"
