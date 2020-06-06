@@ -14,7 +14,7 @@
         </tr>
         <tr *ngFor="let d of lineChartData; let i=index; last as isLast" [class]="'line-'+i">
           <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-          <td id="isLast" class="text-primary">{{avg}}</td>
+          <td id="isLast" class="text-primary">{{avg || "-"}}</td>
         </tr>
       </table>
     </div>
