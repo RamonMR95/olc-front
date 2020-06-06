@@ -36,12 +36,16 @@ export class UserService {
     return this.httpClient.delete<User>(`${API_URL}/users?id=${id}`).toPromise();
   }
 
-  getUserMarksByIdAndDate(id: number, date: string): Promise<UserMarksSubjects> {
+  getUserMarksByIdAndDate(id: number, date: Date): Promise<UserMarksSubjects> {
     return this.httpClient.get<UserMarksSubjects>(`${API_URL}/users/marks?id=${id}&year_start=${date}`).toPromise();
   }
 
   getMentorByCourseId(courseId: number): Promise<User> {
     return this.httpClient.get<User>(`${API_URL}/users/mentor?course_id=${courseId}`).toPromise();
+  }
+
+  getUsersByMentorId(mentorId: number): Promise<User[]> {
+    return this.httpClient.get<User[]>(`${API_URL}/users/students?mentor_id=${mentorId}`).toPromise();
   }
 
 }

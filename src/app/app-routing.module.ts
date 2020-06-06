@@ -16,16 +16,16 @@ import { NewsComponent } from './components/news/news.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
+  { path: "home", component: HomeComponent },
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
+  { path: "news", component: NewsComponent },
   { path: "users", component: UsersComponent, canActivate: [AuthGuard] },
   { path: "profile/:id", component: ProfileComponent, canActivate: [AuthGuard]},
-  { path: "enrollment", component: EnrollmentListComponent, canActivate: [AuthGuard] },
   { path: "course/:id", component: SubjectsComponent, canActivate: [AuthGuard] },
   { path: "exam/:id", component: ExamComponent, canActivate: [AuthGuard, ExamGuard] },
   { path: "subject/:name/themes", component: TopicComponent, canActivate: [AuthGuard] },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "news", component: NewsComponent }
+  { path: "enrollment", component: EnrollmentListComponent },
 ];
 
 @NgModule({
