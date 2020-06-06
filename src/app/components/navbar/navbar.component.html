@@ -1,6 +1,6 @@
   <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark navbar-colors lighten-1 mat-elevation-z3" >
-  <a class="navbar-brand" href="#">OLC</a>
+  <a class="navbar-brand anchor-non-selectable">OLC</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
     aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -16,17 +16,14 @@
         <a class="nav-link hover-colors" routerLink="/news">News</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link hover-colors" routerLink="/enrollment">Courses</a>
+        <a class="nav-link hover-colors" routerLink="/enrollment" *ngIf="loginService.isAuthenticated()">Courses</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="navbar-colors nav-link dropdown-toggle hover-colors" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">My Courses
-        </a>
-        <div class="dropdown-menu dropdown-secondary navbar-colors mat-elevation-z8" aria-labelledby="navbarDropdownMenuLink-555">
-          <a class="dropdown-item link-colors hover-colors" href="#">Action</a>
-          <a class="dropdown-item link-colors hover-colors" href="#">Another action</a>
-          <a class="dropdown-item link-colors hover-colors" href="#">Something else here</a>
-        </div>
+      <li class="nav-item" *ngIf="loginService.isAuthenticated()">
+        <a class="nav-link hover-colors" routerLink="/users">Users</a>
+      </li>
+      <li class="nav-item" *ngIf="loginService.isAuthenticated()">
+        <a *ngIf="!course">{{ course?.courseName}}</a>
+        <a *ngIf="course" class="nav-link hover-colors" [routerLink]="['/course', course?.id]">{{ course?.courseName}}</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto nav-flex-icons">
@@ -39,18 +36,24 @@
       <li class="nav-item avatar dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" style="max-height: 50px;" class="rounded-circle img-fluid img-thumbnail" 
+          <img *ngIf="user?.photo" [src]="user?.photo" style="max-height: 50px;" class="rounded-circle img-fluid img-thumbnail" 
+            alt="avatar image">
+
+            <img *ngIf="!user?.photo" src="https://firebasestorage.googleapis.com/v0/b/olc-imgs.appspot.com/o/images%2Fdefault.png?alt=media&token=05a496ca-1c9f-4d27-bd57-eca95fed766f" style="max-height: 50px;" class="rounded-circle img-fluid img-thumbnail" 
             alt="avatar image">
         </a>
         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary navbar-colors mat-elevation-z8"
           aria-labelledby="navbarDropdownMenuLink-55">
-          <a class="dropdown-item link-colors hover-colors" href="#">Action</a>
-          <a class="dropdown-item link-colors hover-colors" href="#">Another action</a>
-          <a class="dropdown-item link-colors hover-colors" href="#">Something else here</a>
+          <a class="dropdown-item link-colors hover-colors" [routerLink]="['/profile', user.id]">Profile</a>
+          <a class="dropdown-item link-colors hover-colors" (click)="handleLogout()">Logout</a>
         </div>
       </li>
     </div>
     </ul>
+    <div *ngIf="!loginService.isAuthenticated()">
+      <button class="mat-raised-button btn-primary mx-3" routerLink="/login">Login</button>
+      <button class="mat-raised-button btn-primary" routerLink="/register">Register</button>
+    </div>
   </div>
 </nav>
 <!--/.Navbar -->

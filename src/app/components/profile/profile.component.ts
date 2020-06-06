@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   private activatedEdit: boolean;
   private userUpdate: boolean;
   private adddressUpdate: boolean;
+  seeMarks: boolean;
 
   public form: FormGroup;
   public formAddress: FormGroup;
@@ -44,6 +45,7 @@ export class ProfileComponent implements OnInit {
     this.activatedEdit = true;
     this.userUpdate = false;
     this.adddressUpdate = false;
+    this.isMyProfile();
     this.initForms();
     this.init();
   }
@@ -245,5 +247,11 @@ export class ProfileComponent implements OnInit {
       position: "center",
     });
     Swal.showLoading();
+  }
+
+  private isMyProfile(): void {
+    let userId = localStorage.getItem("id");
+    let routeId = this.route.snapshot.params.id;
+    this.seeMarks = userId === routeId;
   }
 }

@@ -12,11 +12,11 @@ import { User } from 'src/app/models/user.model';
 })
 export class MarksGraphComponent implements OnInit {
 
-  private avg: number = 0;
-
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
 
+  private avg: number = 0;
   user: User;
+  userId: number;
 
   private studentMarks: number[] = [];
   public lineChartLabels: Label[];
@@ -24,11 +24,17 @@ export class MarksGraphComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.getDataStudent(1,'1992-09-07');
-    this.getDataStudent(1,'1992/09/07');
+    this.userId = parseInt(localStorage.getItem("id"));
+    this.getUser();
   }
 
-  async getDataStudent(id: number, date: string) {
+  getUser(): void {
+    this.userService.getUser(this.userId).then(usr => {
+      this.getDataStudent(usr.id, usr.course.yearStart);
+    })
+  }
+
+  async getDataStudent(id: number, date: Date) {
     var json_data = {};
     var resultSubjects = [];
         
