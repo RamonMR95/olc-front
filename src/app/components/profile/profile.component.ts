@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { User } from "src/app/models/user.model";
 import { Course } from "src/app/models/course.model";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -21,10 +21,11 @@ export class ProfileComponent implements OnInit {
   public address: Address;
   public role: Role;
 
-  private activatedEdit: boolean;
-  private userUpdate: boolean;
-  private adddressUpdate: boolean;
-  seeMarks: boolean;
+  public activatedEdit: boolean;
+  public userUpdate: boolean;
+  public adddressUpdate: boolean;
+  public seeMarks: boolean;
+  public seePhotoButton: boolean;
 
   public form: FormGroup;
   public formAddress: FormGroup;
@@ -236,7 +237,7 @@ export class ProfileComponent implements OnInit {
   private loadDataModal() {
     Swal.fire({
       title: "Loading data Profile",
-      text: "We are get your profile data.",
+      text: "We are getting your profile data.",
       padding: "12em",
       width: 650,
       allowEscapeKey: false,
@@ -253,5 +254,6 @@ export class ProfileComponent implements OnInit {
     let userId = localStorage.getItem("id");
     let routeId = this.route.snapshot.params.id;
     this.seeMarks = userId === routeId;
+    this.seePhotoButton = userId === routeId;
   }
 }
