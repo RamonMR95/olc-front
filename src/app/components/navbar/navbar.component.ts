@@ -33,4 +33,10 @@ export class NavbarComponent implements OnInit {
     this.loginService.logout();
     this.router.navigate(["/home"]);
   }
+
+ async redirectToProfile() {
+    await this.router.navigate(["/profile", localStorage.getItem("id")])
+    location.reload();
+  }
+
 }
