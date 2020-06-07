@@ -1,46 +1,46 @@
-<h3>Login</h3>
-<form [formGroup]="form" class="py-5">
-  <div>
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input
-        matInput
-        type="text"
-        placeholder="Your Email *"
-        formControlName="email"
-      />
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field>
-      <mat-label>Password</mat-label>
-      <input
-        matInput
-        type="password"
-        placeholder="Your Password *"
-        formControlName="password"
-      />
-    </mat-form-field>
-  </div>
-  <div>
-    <button
-      mat-raised-button
-      type="submit"
-      color="primary"
-      (click)="getCredentials();"
-    >
-      Login
-    </button>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="navigateToRegister();"
-      class="mx-2"
-    >
-      Register
-    </button>
-  </div>
-  <div class="py-3">
-    <a routerLink="/recoverpw" [mat-dialog-close]="false">Forget Password?</a>
-  </div>
-</form>
+<h2 mat-dialog-title class="mat-dialog-title-text">Login</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="py-4">
+    <div>
+      <mat-form-field class="mat-form-field-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Your Email *"
+          formControlName="email"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="mat-form-field-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="Your Password *"
+          formControlName="password"
+        />
+      </mat-form-field>
+    </div>
+    <mat-dialog-actions class="mat-dialog-actions-button-end py-3">
+      <button
+        mat-raised-button
+        type="submit"
+        color="primary"
+        class="mat-dialog-actions-button-hover"
+        (click)="getCredentials()"
+      >
+        Login
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="navigateToRegister()"
+        class="mx-2 mat-dialog-actions-button-hover"
+      >
+        Register
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>
