@@ -13,7 +13,15 @@
         {{ courseSB?.course.yearEnd | date: "MM/dd/yy" }}
       </div>
     </mat-expansion-panel-header>
-    <p *ngFor="let s of courseSB?.subjects">{{ s }}</p>
+    <mat-list class="un-select-text-and-icon ">
+      <div mat-subheader>Subjects</div>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let s of courseSB?.subjects">
+        <mat-icon mat-list-icon>subject</mat-icon>
+        <div mat-line>{{ s }}</div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
     <button class="float-right" mat-raised-button color="primary" (click)="enroll(courseSB?.course.id)">
       Enroll
     </button>
