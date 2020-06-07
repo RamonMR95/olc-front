@@ -3,8 +3,9 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { User } from "../../models/user.model";
 import { Address } from "../../models/address.model";
 import { Role } from '../../models/role.model';
-import { Course } from 'src/app/models/course.model';
 import { UserService } from '../../services/user.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-register",
@@ -15,7 +16,9 @@ export class RegisterComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, public userService: UserService) {}
+  constructor(private _formBuilder: FormBuilder,
+     public userService: UserService,
+      public router: Router) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -24,7 +27,6 @@ export class RegisterComponent implements OnInit {
       emailCtrl: ["", [Validators.required, Validators.email]],
       passwordCtrl: ["", Validators.required],
       birthDate: ["", Validators.required],
-      nicknameCtrl: ["", Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
       streetCtrl: ["", Validators.required],
@@ -45,22 +47,23 @@ export class RegisterComponent implements OnInit {
       );
 
     let newRole: Role = new Role()
-
-    let newCourse: Course = new Course();
     
     let newUser: User = new User(
       newAdress,
       newRole,
-      newCourse,
+      null,
       this.firstFormGroup.controls.nameCtrl.value,
       this.firstFormGroup.controls.surnameCtrl.value,
-      this.firstFormGroup.controls.nicknameCtrl.value,
       this.firstFormGroup.controls.emailCtrl.value,
       this.firstFormGroup.controls.passwordCtrl.value,
       this.firstFormGroup.controls.birthDate.value
     );
-    
-   // this.userService.createUser(newUser);
 
+   this.userService.createUser(newUser)
+   .then(usr => {
+     Swal.fire("Registered!", "You have registered for OLC.", "success")
+     .then(_ => this.router.navigate(["/login"]));
+    })
+   .catch(_ => Swal.fire("Invalid register!", "You have submitted invalid data.", "error"));
   }
 }

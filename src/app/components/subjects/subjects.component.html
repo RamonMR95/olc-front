@@ -1,20 +1,42 @@
-<mat-card>
-  <mat-card-title fxLayoutAlign="center center" fxLayout="column" class="py-2 custom-font-text "
-    >Name Of Course
-    <div class="py-2 fixed-margin-left ">
-      <mat-card-content
-        fxFlex="100"
-        fxLayoutAlign="center baseline"
-        *ngFor="let sbj of subjectsName; let i = index"
-        [ngStyle]="{ fxLayout: i % 2 == 0 ? 'column' : 'row' }"
-        class="custom-div-data custom-hover custom-div-active custom-font-text "
-        (click)="handlerToSubject(sbj)" 
-      >
-        <div *ngIf="!subjectsName.isEmpty" >{{ sbj }}</div>
-      </mat-card-content>
-      <div *ngIf="exitsSubjects == false" class="py-2 ">
-        This course doesn't has any assigned subjects
+<div>
+  <mat-card>
+    <mat-card-title
+      fxLayoutAlign="center center"
+      fxLayout="column"
+      class="py-2 custom-font-text"
+      >Name Of Course
+      <div class="py-2 fixed-margin-left">
+        <mat-card-content
+          fxFlex="100"
+          fxLayoutAlign="center baseline"
+          *ngFor="let sbj of subjectsName; let i = index"
+          [ngStyle]="{ fxLayout: i % 2 == 0 ? 'column' : 'row' }"
+          class="custom-div-data custom-hover custom-div-active custom-font-text"
+          (click)="handlerToSubject(sbj)"
+        >
+          <div *ngIf="subjectsName.length > 0">{{ sbj }}</div>
+        </mat-card-content>
+        <div *ngIf="!exitsSubjects" class="py-2">
+          This course doesn't has any assigned subjects
+        </div>
       </div>
-    </div>
-  </mat-card-title>
-</mat-card>
+    </mat-card-title>
+  </mat-card>
+</div>
+<div class="py-5">
+  <mat-card>
+    <mat-card-title>
+      Next exams
+    </mat-card-title>
+    <mat-card-content>
+      <mat-label *ngIf="!(examList | async)?.length">No exams left</mat-label>
+      <mat-selection-list #exams>
+        <mat-list-option
+          *ngFor="let e of examList | async" [routerLink]="['/exam', e.id]"
+        >
+          {{ e?.name }} - {{ e?.date }}
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-card-content>
+  </mat-card>
+</div>
