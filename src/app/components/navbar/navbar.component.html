@@ -44,8 +44,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary navbar-colors mat-elevation-z8"
           aria-labelledby="navbarDropdownMenuLink-55">
-          <a *ngIf="!user" class="dropdown-item link-colors hover-colors">Profile</a>
-          <a *ngIf="user" class="dropdown-item link-colors hover-colors" [routerLink]="['/profile', user.id]">Profile</a>
+          <a class="dropdown-item link-colors hover-colors" (click)="redirectToProfile()">Profile</a>
           <a class="dropdown-item link-colors hover-colors" (click)="handleLogout()">Logout</a>
         </div>
       </li>
