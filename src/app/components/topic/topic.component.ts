@@ -11,14 +11,14 @@ import { SubjectTheme } from 'src/app/interfaces/subject.theme.interface';
 export class TopicComponent implements OnInit {
   constructor(
     private subjectService: SubjectService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) {}
 
   private listTheme: SubjectTheme[] = [];
+  public name: string = this.route.snapshot.params.name.toUpperCase();
 
   ngOnInit() {
-    this.getListThemeByName(this.route.snapshot.params.name);
+    this.getListThemeByName(this.name);
   }
 
  async getListThemeByName(name: string) {
