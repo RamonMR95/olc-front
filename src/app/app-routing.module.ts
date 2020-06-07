@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: "course/:id", component: SubjectsComponent, canActivate: [AuthGuard] },
   { path: "exam/:id", component: ExamComponent, canActivate: [AuthGuard, ExamGuard] },
   { path: "subject/:name/themes", component: TopicComponent, canActivate: [AuthGuard] },
-  { path: "enrollment", component: EnrollmentListComponent },
+  { path: "enrollment", component: EnrollmentListComponent }
 ];
 
 @NgModule({
