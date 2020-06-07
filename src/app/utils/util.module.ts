@@ -5,6 +5,7 @@ import { ChartsModule } from 'ng2-charts';
 
 import { MarksGraphComponent } from './marks-graph/marks-graph.component';
 import { UploadComponent } from './upload/upload.component';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { UploadComponent } from './upload/upload.component';
     imports: [
       BrowserModule,
       RouterModule,
-      ChartsModule
+      ChartsModule,
+      MaterialModule
     ],
     exports: [
         MarksGraphComponent,
