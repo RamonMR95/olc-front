@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { User } from "src/app/models/user.model";
 import { Course } from "src/app/models/course.model";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -21,21 +21,17 @@ export class ProfileComponent implements OnInit {
   public address: Address;
   public role: Role;
 
-  private activatedEdit: boolean;
-  private userUpdate: boolean;
-  private adddressUpdate: boolean;
-  seeMarks: boolean;
-  isUpdateProfile: boolean;
+  public activatedEdit: boolean;
+  public userUpdate: boolean;
+  public adddressUpdate: boolean;
+  public seeMarks: boolean;
+  public seePhotoButton: boolean;
 
   public form: FormGroup;
   public formAddress: FormGroup;
 
   public courseUsr: Course;
   public mentor: User;
-
-  userId = localStorage.getItem("id");
-  roleName = localStorage.getItem("role");
-  routeId = this.route.snapshot.params.id;
 
   constructor(
     private userService: UserService,
@@ -50,7 +46,7 @@ export class ProfileComponent implements OnInit {
     this.activatedEdit = true;
     this.userUpdate = false;
     this.adddressUpdate = false;
-    this.canSeeMarks();
+    this.isMyProfile();
     this.initForms();
     this.init();
   }
@@ -241,7 +237,7 @@ export class ProfileComponent implements OnInit {
   private loadDataModal() {
     Swal.fire({
       title: "Loading data Profile",
-      text: "We are get your profile data.",
+      text: "We are getting your profile data.",
       padding: "12em",
       width: 650,
       allowEscapeKey: false,
@@ -254,12 +250,10 @@ export class ProfileComponent implements OnInit {
     Swal.showLoading();
   }
 
-  private canSeeMarks(): void {
-    this.seeMarks = this.userId !== this.routeId && this.roleName === "Teacher" || this.userId === this.routeId && this.roleName !== "Teacher" ;
-    this.canEditProfile();
-  }
-
-  private canEditProfile(): void {
-    this.isUpdateProfile = this.userId === this.routeId;
+  private isMyProfile(): void {
+    let userId = localStorage.getItem("id");
+    let routeId = this.route.snapshot.params.id;
+    this.seeMarks = userId === routeId;
+    this.seePhotoButton = userId === routeId;
   }
 }
