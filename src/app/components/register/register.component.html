@@ -13,6 +13,12 @@
                             <mat-label>Surname</mat-label>
                             <input matInput placeholder="Last name" formControlName="surnameCtrl" required>
                         </mat-form-field>
+                        <mat-form-field class="mx-5">
+                            <mat-label>Date of Birth</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="birthDate" required />
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
@@ -23,15 +29,6 @@
                             <mat-label>Password</mat-label>
                             <input matInput type="password" placeholder="Password" formControlName="passwordCtrl"
                                 required>
-                        </mat-form-field>
-
-                    </div>
-                    <div>
-                        <mat-form-field class="mx-5">
-                            <mat-label>Date of Birth</mat-label>
-                            <input matInput [matDatepicker]="picker" formControlName="birthDate" required />
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
                     </div>
                     <div>
