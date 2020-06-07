@@ -27,17 +27,15 @@ export class LoginComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginModalComponent, {
       width: "500px",
-      data: {},
-      disableClose: true,
+      data: {}
     });
 
     dialogRef.afterClosed().subscribe(
       (data) => {
-        this.login(data);
+        data ? this.login(data) : this.router.navigate(["/"]);
       },
-      (err) => {
-        console.log(err);
-        this.openDialog();
+      (_) => {
+        this.router.navigate(["/"]);
       }
     );
   }
@@ -49,7 +47,7 @@ export class LoginComponent implements OnInit {
         this.loginService.setLocalStorage(resp);
         this.router.navigate(["/home"]);
       })
-      .catch((err) => {
+      .catch((_) => {
         this.loginService.logout();
         this.router.url.replace("/", "") === "register"
           ? this.router.navigate(["/register"])
