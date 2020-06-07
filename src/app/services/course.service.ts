@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { API_URL } from "../config/config";
+import { Course } from '../models/course.model';
 
 @Injectable({
   providedIn: "root",
@@ -34,5 +35,9 @@ export class CourseService {
 
   enroll(userId: number, courseId: number): Promise<any> {
     return this.httpClient.get<any>(`${API_URL}/users/enroll?user_id=${userId}&course_id=${courseId}`).toPromise();
+  }
+
+  getCourseByCourseId(courseId: number): Promise<Course> {
+    return this.httpClient.get<Course>(`${API_URL}/courses?id=${courseId}`).toPromise();
   }
 }
