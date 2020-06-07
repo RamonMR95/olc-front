@@ -25,12 +25,17 @@ export class ProfileComponent implements OnInit {
   private userUpdate: boolean;
   private adddressUpdate: boolean;
   seeMarks: boolean;
+  isUpdateProfile: boolean;
 
   public form: FormGroup;
   public formAddress: FormGroup;
 
   public courseUsr: Course;
   public mentor: User;
+
+  userId = localStorage.getItem("id");
+  roleName = localStorage.getItem("role");
+  routeId = this.route.snapshot.params.id;
 
   constructor(
     private userService: UserService,
@@ -45,7 +50,7 @@ export class ProfileComponent implements OnInit {
     this.activatedEdit = true;
     this.userUpdate = false;
     this.adddressUpdate = false;
-    this.isMyProfile();
+    this.canSeeMarks();
     this.initForms();
     this.init();
   }
@@ -249,9 +254,12 @@ export class ProfileComponent implements OnInit {
     Swal.showLoading();
   }
 
-  private isMyProfile(): void {
-    let userId = localStorage.getItem("id");
-    let routeId = this.route.snapshot.params.id;
-    this.seeMarks = userId === routeId;
+  private canSeeMarks(): void {
+    this.seeMarks = this.userId !== this.routeId && this.roleName === "Teacher" || this.userId === this.routeId && this.roleName !== "Teacher" ;
+    this.canEditProfile();
+  }
+
+  private canEditProfile(): void {
+    this.isUpdateProfile = this.userId === this.routeId;
   }
 }
