@@ -5,6 +5,6 @@ export class News {
     public title: string,
     public content: string,
     public writer: string,
-    public createdAt: Date
+    public createdAt?: Date
   ) {}
 }
