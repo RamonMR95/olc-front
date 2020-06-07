@@ -1,3 +1,21 @@
-<input type="file" (change)="uploadFile($event)" />
-<div>{{ uploadPercent | async }}</div>
-<a [href]="downloadURL">{{ downloadURL}}</a>
+  <img
+    for="input-file-id"
+    *ngIf="userPhoto?.photo"
+    class="py-5 mx-2 rounded-mat-angular-img"
+    [src]="userPhoto?.photo"
+  />
+
+  <img
+    for="input-file-id"
+    *ngIf="!userPhoto?.photo"
+    class="py-5 mx-2 rounded-mat-angular-img"
+    src="https://firebasestorage.googleapis.com/v0/b/olc-imgs.appspot.com/o/images%2Fdefault.png?alt=media"
+  />
+  <input
+  *ngIf="seeUploadPhoto"
+  id="input-file-id"
+  type="file"
+  accept="image/*"
+  (change)="uploadFile($event)"
+/>
+<mat-progress-bar *ngIf="isUploadFile"  mode="buffer" [bufferValue]="uploadPercent | async"></mat-progress-bar>

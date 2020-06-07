@@ -1,14 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { finalize } from "rxjs/operators";
-import {
-  AngularFireStorage,
-  AngularFireUploadTask,
-} from "@angular/fire/storage";
+import { AngularFireStorage } from "@angular/fire/storage";
 import { UploadService } from "../../services/upload.service";
 import { UserService } from "../../services/user.service";
 import { User } from "src/app/models/user.model";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
 @Component({
   selector: "app-upload",
@@ -25,28 +22,41 @@ export class UploadComponent implements OnInit {
     private uploadService: UploadService,
     private userService: UserService
   ) {}
+
+  @Input() userPhoto: User;
+  @Input() seeUploadPhoto: boolean;
+  isUploadFile: boolean = false;
+
   ngOnInit(): void {
     this.userService
       .getUserByEmail(localStorage.getItem("email"))
       .then((usr) => (this.user = usr));
   }
 
-  uploadFile(event) {
+  async uploadFile(event) {
     const file = event.target.files[0];
     const filePath = `/images/${uuid() + "-" + file.name}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
 
     this.uploadPercent = task.percentageChanges();
+    this.isUploadFile = true;
+
     task
       .snapshotChanges()
-      .pipe(finalize(() => fileRef.getDownloadURL().subscribe(res => {
-        this.downloadURL = res;
-        this.uploadService.uploadPhoto(this.user.id, this.downloadURL);
-      })))
+      .pipe(
+        finalize(() =>
+          fileRef.getDownloadURL().subscribe(async (res) => {
+            this.downloadURL = res;
+            let urlEncode: string = encodeURI(this.downloadURL);
+            await this.uploadService.uploadPhoto(this.user.id, urlEncode);
+            setInterval(
+              (_) => ((this.isUploadFile = false), location.reload()),
+              200
+            );
+          })
+        )
+      )
       .subscribe();
-
   }
-
-  
 }
