@@ -1,15 +1,17 @@
+<h1 class="text-center not-selectable-text">{{ name }}</h1>
 <mat-accordion class="mx-2" *ngFor="let item of listTheme; let i = index">
-    <mat-expansion-panel
-      (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false"
-    >
-      <mat-expansion-panel-header>
-        <mat-panel-title> Title: {{ item?.title || "----"}}</mat-panel-title>
-        <mat-panel-description
-          > Description: {{ item?.description }}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <app-topic-content [topics]="listTheme[i]"></app-topic-content>
-    </mat-expansion-panel>
-  </mat-accordion>
-  
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title class="not-selectable-text">{{
+        item?.title
+      }}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description>
+      Description: {{ item?.description }}
+    </mat-panel-description>
+    <app-topic-content [topics]="listTheme[i]"></app-topic-content>
+  </mat-expansion-panel>
+</mat-accordion>
