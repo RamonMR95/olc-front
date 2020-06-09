@@ -13,6 +13,7 @@ import { TopicComponent } from './components/topic/topic.component';
 import { ExamComponent } from './components/exam/exam.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsComponent } from './components/news/news.component';
+import { ExamFormComponent } from './components/exam-form/exam-form.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: "course/:id", component: SubjectsComponent, canActivate: [AuthGuard] },
   { path: "exam/:id", component: ExamComponent, canActivate: [AuthGuard, ExamGuard] },
   { path: "subject/:name/themes", component: TopicComponent, canActivate: [AuthGuard] },
-  { path: "enrollment", component: EnrollmentListComponent }
+  { path: "enrollment", component: EnrollmentListComponent },
+  { path: "exams/creation", component: ExamFormComponent } // Provisional
 ];
 
 @NgModule({

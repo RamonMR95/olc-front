@@ -30,6 +30,7 @@ import { TopicComponent } from './components/topic/topic.component';
 import { TopicContentComponent } from './components/topic-content/topic-content.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsComponent } from './components/news/news.component';
+import { ExamFormComponent } from './components/exam-form/exam-form.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { NewsComponent } from './components/news/news.component';
     TopicContentComponent,
     ExamComponent,
     HomeComponent,
-    NewsComponent
+    NewsComponent,
+    ExamFormComponent
   ],
   imports: [
     BrowserModule,
