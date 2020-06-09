@@ -4,7 +4,6 @@ import { News } from "src/app/models/news.model";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import Swal from "sweetalert2";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-news",
@@ -61,4 +60,9 @@ export class NewsComponent implements OnInit {
   clearFormData(): void {
     this.form.reset();
   }
+
+  isTeacher(): boolean {
+    return localStorage.getItem('role').toUpperCase() === 'TEACHER';
+  }
+
 }

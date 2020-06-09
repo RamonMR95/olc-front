@@ -1,0 +1,32 @@
+<div class="mat-elevation-z1">
+    <h3 mat-title class="text-center top-separation not-selectable-text"> Contact Us</h3>
+  <form [formGroup]="form">
+      <div class="row mx-4 py-2">
+    <mat-form-field appearance="fill" class="width-form-row">
+      <mat-label>Your name</mat-label>
+      <input matInput
+      formControlName="nameUsr" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="width-form-row">
+      <mat-label>Your email</mat-label>
+      <input matInput
+      type="email"
+      formControlName="emailUsr"  />
+    </mat-form-field>
+</div>
+    <mat-form-field appearance="fill" class="mx-4 width-form-data">
+      <mat-label>Subject</mat-label>
+      <input matInput
+      formControlName="subject"  />
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill" class="mx-4 width-form-data">
+      <mat-label>Textarea</mat-label>
+      <textarea matInput
+      formControlName="body" ></textarea>
+    </mat-form-field>
+    <div class="flex-to-end">
+        <button mat-raised-button color="accent" (click)="sendMessage()" class="separation-margin">Submit</button>
+    </div>
+  </form>
+</div>

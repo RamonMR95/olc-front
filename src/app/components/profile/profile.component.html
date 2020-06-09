@@ -151,7 +151,7 @@
         </mat-card>
       </mat-tab>
 
-      <mat-tab *ngIf="seeMarks" label="Marks Course">
+      <mat-tab *ngIf="seeMarks && courseUsr !== undefined" label="Marks Course">
         <mat-card>
           <mat-card-title>
             <mat-card-content>
@@ -160,13 +160,13 @@
           </mat-card-title>
         </mat-card>
       </mat-tab>
-      <mat-tab label="My Course">
+      <mat-tab *ngIf="courseUsr !== undefined" label="My Course">
         <mat-card>
           <mat-card-content>
             <mat-card>
               <mat-card-content>
                 <mat-card-title class="text-decoration-green"
-                  >Tutor: {{ mentor?.name || "Course has no mentor" }}
+                  >Mentor: {{ mentor?.name || "Course has no mentor" }}
                   {{ mentor?.surName }}</mat-card-title
                 >
                 <div class="col-sm-6 text-format mx-4 padding-top-div row">

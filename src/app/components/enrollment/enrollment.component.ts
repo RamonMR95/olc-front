@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class EnrollmentComponent implements OnInit {
   @Input() courseSB: CourseSubject;
-
+  
   constructor(
     private userService: UserService,
     private courseService: CourseService
@@ -28,7 +28,7 @@ export class EnrollmentComponent implements OnInit {
             icon: 'success',
             title: 'Enrollment...',
             text: 'You have been enrolled to the course!'
-          })
+          }).then(_ => location.reload())
         })
         .catch(_ => {
           Swal.fire({
@@ -40,4 +40,10 @@ export class EnrollmentComponent implements OnInit {
       });
     }
   }
+  
+  isStudent(): boolean {
+    return localStorage.getItem("role").toUpperCase() === "STUDENT";
+
+  }
+
 }

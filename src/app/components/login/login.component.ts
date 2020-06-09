@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  login(user: UserLogin): void {
-    this.loginService
+  async login(user: UserLogin): Promise<void> {
+    await this.loginService
       .authenticate(user)
       .then((resp: any) => {
         this.loginService.setLocalStorage(resp);
@@ -53,5 +53,6 @@ export class LoginComponent implements OnInit {
           ? this.router.navigate(["/register"])
           : this.router.navigate(["/login"]);
       });
+      location.reload();
   }
 }

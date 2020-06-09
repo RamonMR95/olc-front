@@ -1,5 +1,5 @@
 <button
-  *ngIf="!create"
+  *ngIf="!create && isTeacher()"
   mat-raised-button
   (click)="toggleCreate()"
   class="news-bg-color text-white"

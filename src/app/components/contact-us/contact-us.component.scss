@@ -1,0 +1,29 @@
+.width-form-row {
+  width: 50%;
+  padding: 4px;
+}
+
+.width-form-data {
+  width: 95%;
+}
+
+.top-separation {
+  padding-top: 10px;
+}
+
+.separation-margin {
+  margin-right: 23px;
+  margin-bottom: 25px;
+}
+
+.flex-to-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.not-selectable-text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

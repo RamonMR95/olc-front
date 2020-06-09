@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ExamService } from "../../services/exam.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { QuestionAnswer } from "../../interfaces/question.answer.interface";
 import { UserExam } from "../../models/user.exam.model";
-import { UserService } from "../../services/user.service";
 import { User } from "../../models/user.model";
 import { Exam } from "../../models/exam.model";
 import Swal from "sweetalert2";
@@ -23,8 +22,6 @@ export class ExamComponent implements OnInit {
 
   constructor(
     private examService: ExamService,
-    private route: ActivatedRoute,
-    private userService: UserService,
     private router: Router
   ) {}
 
@@ -57,7 +54,7 @@ export class ExamComponent implements OnInit {
   evaluateExam(): void {
     this.selected.forEach((s) => {
       if (s.correct) {
-        this.correctAnswers++;
+        this.correctAnswers += 2;
       }
     });
   }

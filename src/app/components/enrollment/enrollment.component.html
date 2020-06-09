@@ -4,7 +4,7 @@
     (closed)="panelOpenState = false"
   >
     <mat-expansion-panel-header>
-      <mat-panel-title> Tutor: {{ courseSB?.mentor || "----"}}</mat-panel-title>
+      <mat-panel-title> Mentor: {{ courseSB?.mentor || "----"}}</mat-panel-title>
       <mat-panel-description
         >{{ courseSB?.course.courseName }} - {{ courseSB?.course.schedule }}
       </mat-panel-description>
@@ -22,7 +22,7 @@
         <mat-divider></mat-divider>
       </mat-list-item>
     </mat-list>
-    <button class="float-right" mat-raised-button color="primary" (click)="enroll(courseSB?.course.id)">
+    <button *ngIf="isStudent()" class="float-right" mat-raised-button color="primary" (click)="enroll(courseSB?.course.id)">
       Enroll
     </button>
   </mat-expansion-panel>

@@ -62,9 +62,9 @@ export class ProfileComponent implements OnInit {
       this.getUserData(),
       this.getAddressData(),
       this.getRoleData(),
-      await this.getCourseData(),
-      this.getMentorByCourseId(this.courseUsr.id),
+      this.getCourseData(),
     ]);
+    this.courseUsr !== undefined ? this.getMentorByCourseId(this.courseUsr.id) : "";
   }
 
   getUserData(): Promise<any> {
@@ -165,7 +165,8 @@ export class ProfileComponent implements OnInit {
       .then((_) => {
         this.userUpdate = true;
         this.user = newUser;
-      }).catch(Swal.close);
+      })
+      .catch(Swal.close);
   }
 
   private async updateProfileAddress(): Promise<any> {
@@ -185,7 +186,8 @@ export class ProfileComponent implements OnInit {
           .then((_) => {
             this.adddressUpdate = true;
             this.address = newAddress;
-          }).catch(Swal.close);
+          })
+          .catch(Swal.close);
       });
   }
 
