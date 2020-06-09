@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { LoginService } from "../../services/login.service";
-import { UserService } from "../../services/user.service";
 import { Course } from "../../models/course.model";
 import { User } from '../../models/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -37,6 +36,10 @@ export class NavbarComponent implements OnInit {
  async redirectToProfile() {
     await this.router.navigate(["/profile", localStorage.getItem("id")])
     location.reload();
+  }
+
+  isTeacher(): boolean {
+    return localStorage.getItem('role').toUpperCase() === 'TEACHER';
   }
 
 }

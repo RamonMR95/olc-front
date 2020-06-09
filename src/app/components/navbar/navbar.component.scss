@@ -8,6 +8,8 @@
 
 .hover-colors:hover {
   background-color: #23338f;
+  box-shadow: 0 4px rgba($color: grey, $alpha: 0.5);
+  transition: all 0.5s ease;
   color: white;
 }
 
@@ -16,4 +18,5 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  cursor: pointer;
 }
