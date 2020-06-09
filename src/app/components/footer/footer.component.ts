@@ -11,8 +11,6 @@ export class FooterComponent implements OnInit {
   @Input() user: User;
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.user);
-  }
+  ngOnInit() {}
 
 }
