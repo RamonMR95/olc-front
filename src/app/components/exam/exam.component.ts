@@ -29,7 +29,7 @@ export class ExamComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.examId = this.route.snapshot.params.id;
+    this.examId = parseInt(this.router.url.replace(/[^0-9]/g, ''));
     this.userId = parseInt(localStorage.getItem("id"));
     this.getQuestionsAndAnswers(this.examId);
   }
@@ -41,7 +41,7 @@ export class ExamComponent implements OnInit {
         for (let i = 0; i < exam.length; i++) {
           let question: QuestionAnswer = {
             question: exam[i].question,
-            answers: exam[i].answer,
+            answers: exam[i].answers,
           };
           this.questions.push(question);
         }

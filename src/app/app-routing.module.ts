@@ -5,14 +5,14 @@ import { UsersComponent } from "./components/users/users.component";
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { EnrollmentListComponent } from "./components/enrollment-list/enrollment-list.component";
-import { SubjectsComponent } from './components/subjects/subjects.component';
+import { SubjectsComponent } from "./components/subjects/subjects.component";
 import { AuthGuard } from "./guards/auth.guard";
-import { ProfileComponent } from './components/profile/profile.component';
-import { ExamGuard } from './guards/exam.guard';
-import { TopicComponent } from './components/topic/topic.component';
-import { ExamComponent } from './components/exam/exam.component';
-import { HomeComponent } from './components/home/home.component';
-import { NewsComponent } from './components/news/news.component';
+import { ProfileComponent } from "./components/profile/profile.component";
+import { ExamGuard } from "./guards/exam.guard";
+import { TopicComponent } from "./components/topic/topic.component";
+import { ExamComponent } from "./components/exam/exam.component";
+import { HomeComponent } from "./components/home/home.component";
+import { NewsComponent } from "./components/news/news.component";
 import { ExamFormComponent } from './components/exam-form/exam-form.component';
 
 const routes: Routes = [
@@ -22,12 +22,31 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent },
   { path: "news", component: NewsComponent },
   { path: "users", component: UsersComponent, canActivate: [AuthGuard] },
-  { path: "profile/:id", component: ProfileComponent, canActivate: [AuthGuard]},
-  { path: "course/:id", component: SubjectsComponent, canActivate: [AuthGuard] },
-  { path: "exam/:id", component: ExamComponent, canActivate: [AuthGuard, ExamGuard] },
-  { path: "subject/:name/themes", component: TopicComponent, canActivate: [AuthGuard] },
-  { path: "enrollment", component: EnrollmentListComponent },
-  { path: "exams/creation", component: ExamFormComponent } // Provisional
+  {
+    path: "profile/:id",
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "course/:id",
+    component: SubjectsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "exam",
+    canActivate: [AuthGuard, ExamGuard],
+    children: [
+      { path: "", redirectTo: "/home", pathMatch: "full"},
+      { path: ":id", component: ExamComponent },
+      { path: "creation", component: ExamFormComponent}
+    ],
+  },
+  {
+    path: "subject/:name/themes",
+    component: TopicComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: "enrollment", component: EnrollmentListComponent }
 ];
 
 @NgModule({
