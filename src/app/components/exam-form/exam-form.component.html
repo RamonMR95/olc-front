@@ -1,0 +1,165 @@
+<mat-card>
+  <mat-card-title>
+    <h2 class="text-center">Creating an Exam</h2>
+  </mat-card-title>
+  <mat-card-content class="py-3">
+    <div class="d-flex justify-content-center">
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="ml-5">
+            <mat-form-field>
+              <mat-label>Exam Name</mat-label>
+              <input matInput formControlName="examName" required />
+            </mat-form-field>
+          </div>
+          <div class="ml-5">
+            <mat-form-field>
+              <mat-label>Course</mat-label>
+              <mat-select
+                [formControl]="form.controls.course"
+                (selectionChange)="handleCourseChange($event)"
+              >
+                <mat-option *ngFor="let c of courses" [value]="c?.id"
+                  >{{ c?.courseName }} {{ c?.schedule }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="ml-5">
+            <mat-form-field>
+              <mat-label>Subject</mat-label>
+              <mat-select [formControl]="form.controls.subject">
+                <mat-option *ngFor="let s of subjects" [value]="s">{{
+                  s
+                }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="ml-5">
+            <mat-form-field>
+              <mat-label>Visible</mat-label>
+              <mat-select [formControl]="form.controls.visible">
+                <mat-option [value]="true">True</mat-option>
+                <mat-option [value]="false">False</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="ml-5">
+            <mat-form-field>
+              <mat-label>Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="date"
+                readonly
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center py-3">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="createExam()"
+            *ngIf="!isExamCreated"
+            [disabled]="!form.valid"
+          >
+            Create
+          </button>
+          <button mat-raised-button color="warn" *ngIf="!isExamCreated" (click)="cancelOperation()">
+            Cancel
+          </button>
+        </div>
+        <div class="d-flex justify-content-center py-3" *ngIf="isExamCreated">
+          <div>
+            <mat-form-field>
+              <mat-label>Question {{ questionCounter }}</mat-label>
+              <input matInput [formControl]="questionsForm.controls.question" required />
+            </mat-form-field>
+          </div>
+          <div class="ml-5">
+            <mat-radio-group [formControl]="questionsForm.controls.correct">
+              <div class="row">
+                <div>
+                  <mat-form-field>
+                    <mat-label>Answer 1</mat-label>
+                    <input matInput [formControl]="questionsForm.controls.answer1" required />
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-radio-button
+                    class="example-radio-button"
+                    [value]="1"
+                  ></mat-radio-button>
+                </div>
+              </div>
+              <div>
+                <div class="row">
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Answer 2</mat-label>
+                      <input matInput [formControl]="questionsForm.controls.answer2" required />
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-radio-button
+                      class="example-radio-button"
+                      [value]="2"
+                    ></mat-radio-button>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="row">
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Answer 3</mat-label>
+                      <input matInput [formControl]="questionsForm.controls.answer3" required />
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-radio-button
+                      class="example-radio-button"
+                      [value]="3"
+                    ></mat-radio-button>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="row">
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Answer 4</mat-label>
+                      <input matInput [formControl]="questionsForm.controls.answer4" required />
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-radio-button
+                      class="example-radio-button"
+                      [value]="4"
+                    ></mat-radio-button>
+                  </div>
+                </div>
+              </div>
+            </mat-radio-group>
+          </div>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="d-flex justify-content-center mb-2">
+    <div *ngIf="isExamCreated">
+      <button mat-raised-button color="primary" (click)=" createQuestion()" [disabled]="!questionsForm.valid">
+        Create
+      </button>
+      <button mat-raised-button color="warn" (click)="cancelOperation()">Cancel</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
