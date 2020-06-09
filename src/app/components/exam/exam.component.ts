@@ -54,7 +54,7 @@ export class ExamComponent implements OnInit {
   evaluateExam(): void {
     this.selected.forEach((s) => {
       if (s.correct) {
-        this.correctAnswers++;
+        this.correctAnswers += 2;
       }
     });
   }
