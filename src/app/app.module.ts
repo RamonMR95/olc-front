@@ -30,6 +30,8 @@ import { TopicComponent } from './components/topic/topic.component';
 import { TopicContentComponent } from './components/topic-content/topic-content.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsComponent } from './components/news/news.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { HttpErrorInterceptor } from './interceptors/page-not-found.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { NewsComponent } from './components/news/news.component';
     TopicContentComponent,
     ExamComponent,
     HomeComponent,
-    NewsComponent
+    NewsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { NewsComponent } from './components/news/news.component';
   entryComponents: [LoginModalComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
