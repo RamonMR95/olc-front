@@ -32,7 +32,7 @@
       <mat-label *ngIf="!(examList | async)?.length">No exams left</mat-label>
       <mat-selection-list #exams>
         <mat-list-option
-          *ngFor="let e of examList | async" [routerLink]="['/exam', e.id]"
+          *ngFor="let e of examList | async" [routerLink]="['/exam/show', e.id]"
         >
           {{ e?.name }} - {{ e?.date }}
         </mat-list-option>
