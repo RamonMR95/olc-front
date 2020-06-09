@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { UsersComponent } from "./components/users/users.component";
 import { LoginComponent } from "./components/login/login.component";
@@ -14,6 +14,8 @@ import { ExamComponent } from './components/exam/exam.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsComponent } from './components/news/news.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { ExamFormComponent } from './components/exam-form/exam-form.component';
+import { TeacherGuard } from './guards/teacher.guard';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -38,7 +40,7 @@ const routes: Routes = [
     children: [
       { path: "", redirectTo: "/home", pathMatch: "full"},
       { path: ":id", component: ExamComponent },
-      { path: "creation", component: ExamFormComponent}
+      { path: "creation", component: ExamFormComponent }
     ],
   },
   {
@@ -46,7 +48,7 @@ const routes: Routes = [
     component: TopicComponent,
     canActivate: [AuthGuard],
   },
-  { path: "enrollment", component: EnrollmentListComponent }
+  { path: "enrollment", component: EnrollmentListComponent },
   { path: "page-not-found", component: NotFoundComponent},
   { path: "**", redirectTo: '/page-not-found'} 
 

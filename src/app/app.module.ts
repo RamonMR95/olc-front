@@ -52,7 +52,7 @@ import { HttpErrorInterceptor } from './interceptors/page-not-found.interceptor'
     ExamComponent,
     HomeComponent,
     NewsComponent,
-    ExamFormComponent
+    ExamFormComponent,
     NotFoundComponent
   ],
   imports: [
