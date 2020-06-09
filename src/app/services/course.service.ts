@@ -23,6 +23,12 @@ export class CourseService {
       .toPromise();
   }
 
+  getCourse(courseId: number): Promise<any> {
+    return this.httpClient
+      .get<any>(`${API_URL}/courses?id=${courseId}`)
+      .toPromise();
+  }
+
   getSubjectsId(courseId: number): Promise<any> {
     return this.httpClient
       .get<any>(`${API_URL}/courses/subjects?course_id=${courseId}`)

@@ -25,5 +25,9 @@ export class SubjectService {
   getAllTheme(): Promise<any> {
     return this.httpClient.get<any>(`${API_URL}/subject/topic/list`).toPromise();
   }
+
+  getSubjectBySubjectName(subjectName: string): Promise<any> {
+    return this.httpClient.get<any>(`${API_URL}/subject/name?name=${subjectName}`).toPromise();
+}
   
 }
