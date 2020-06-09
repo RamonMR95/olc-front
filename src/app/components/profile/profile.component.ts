@@ -165,7 +165,7 @@ export class ProfileComponent implements OnInit {
       .then((_) => {
         this.userUpdate = true;
         this.user = newUser;
-      });
+      }).catch(Swal.close);
   }
 
   private async updateProfileAddress(): Promise<any> {
@@ -185,7 +185,7 @@ export class ProfileComponent implements OnInit {
           .then((_) => {
             this.adddressUpdate = true;
             this.address = newAddress;
-          });
+          }).catch(Swal.close);
       });
   }
 

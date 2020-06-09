@@ -7,13 +7,13 @@ import { RegisterComponent } from "./components/register/register.component";
 import { EnrollmentListComponent } from "./components/enrollment-list/enrollment-list.component";
 import { SubjectsComponent } from "./components/subjects/subjects.component";
 import { AuthGuard } from "./guards/auth.guard";
-import { ProfileComponent } from "./components/profile/profile.component";
-import { ExamGuard } from "./guards/exam.guard";
-import { TopicComponent } from "./components/topic/topic.component";
-import { ExamComponent } from "./components/exam/exam.component";
-import { HomeComponent } from "./components/home/home.component";
-import { NewsComponent } from "./components/news/news.component";
-import { ExamFormComponent } from './components/exam-form/exam-form.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ExamGuard } from './guards/exam.guard';
+import { TopicComponent } from './components/topic/topic.component';
+import { ExamComponent } from './components/exam/exam.component';
+import { HomeComponent } from './components/home/home.component';
+import { NewsComponent } from './components/news/news.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -47,6 +47,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: "enrollment", component: EnrollmentListComponent }
+  { path: "page-not-found", component: NotFoundComponent},
+  { path: "**", redirectTo: '/page-not-found'} 
+
 ];
 
 @NgModule({

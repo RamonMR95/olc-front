@@ -31,6 +31,8 @@ import { TopicContentComponent } from './components/topic-content/topic-content.
 import { HomeComponent } from './components/home/home.component';
 import { NewsComponent } from './components/news/news.component';
 import { ExamFormComponent } from './components/exam-form/exam-form.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { HttpErrorInterceptor } from './interceptors/page-not-found.interceptor';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { ExamFormComponent } from './components/exam-form/exam-form.component';
     HomeComponent,
     NewsComponent,
     ExamFormComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { ExamFormComponent } from './components/exam-form/exam-form.component';
   entryComponents: [LoginModalComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
