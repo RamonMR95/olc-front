@@ -33,6 +33,7 @@ import { NewsComponent } from './components/news/news.component';
 import { ExamFormComponent } from './components/exam-form/exam-form.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { HttpErrorInterceptor } from './interceptors/page-not-found.interceptor';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { HttpErrorInterceptor } from './interceptors/page-not-found.interceptor'
     HomeComponent,
     NewsComponent,
     ExamFormComponent,
+    ContactUsComponent,
     NotFoundComponent
   ],
   imports: [
