@@ -68,8 +68,7 @@ export class ExamFormComponent implements OnInit {
   async createExam(): Promise<any> {
     await this.subjectService
       .getSubjectBySubjectName(this.form.controls.subject.value)
-      .then((sbj) => (this.subject = sbj))
-      .catch(console.log);
+      .then((sbj) => (this.subject = sbj));
     await this.courseService
       .getCourse(this.form.controls.course.value)
       .then((crs) => (this.course = crs));
@@ -85,8 +84,7 @@ export class ExamFormComponent implements OnInit {
       .then((e) => {
         this.exam = e;
         this.isExamCreated = true;
-      })
-      .catch(console.log);
+      });
   }
 
   getCourses(): void {
@@ -109,7 +107,7 @@ export class ExamFormComponent implements OnInit {
   }
 
   createQuestion(): void {
-    if (this.questionCounter <= MAX_QUESTIONS) {
+    if (this.questionCounter < MAX_QUESTIONS) {
       let question = new Question(this.questionsForm.controls.question.value);
       let ans1 = new Answer(this.questionsForm.controls.answer1.value, false);
       let ans2 = new Answer(this.questionsForm.controls.answer2.value, false);
