@@ -1,6 +1,9 @@
 .fixed-position {
-    position: relative;
-    margin-top: 6em;
+    position: flex;
     height: auto;
     clear: both;
+}
+
+.background-footer {
+    background-color: rgba($color: #FFF, $alpha: 0.5);
 }

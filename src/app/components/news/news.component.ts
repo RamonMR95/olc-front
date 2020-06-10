@@ -62,7 +62,7 @@ export class NewsComponent implements OnInit {
   }
 
   isTeacher(): boolean {
-    return localStorage.getItem('role').toUpperCase() === 'TEACHER';
+    return localStorage.getItem('role') !== null && localStorage.getItem('role').toUpperCase() === 'TEACHER'
   }
 
 }
