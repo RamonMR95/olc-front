@@ -11,3 +11,14 @@ td,
 th {
   width: 12.5%;
 }
+
+.back-color {
+  background-color: rgba($color: #cfeefa, $alpha: 0.7);
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+}
+
+.bold-text {
+  font-weight: 500;
+}
