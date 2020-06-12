@@ -35,7 +35,7 @@ export class ExamGuard implements CanActivate {
     | Promise<boolean | UrlTree> {
 
     this.userId = parseInt(localStorage.getItem("id"));
-    this.examId = parseInt(route.children[0].params.id);
+    this.examId = parseInt(route.paramMap.get("id"));
 
     return new Promise<any>((resolve, reject) => {
       this.examService

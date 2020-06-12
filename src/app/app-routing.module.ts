@@ -37,10 +37,10 @@ const routes: Routes = [
   },
   {
     path: "exam",
-    canActivate: [AuthGuard, ExamGuard],
+    canActivate: [AuthGuard],
     children: [
       { path: "", redirectTo: "/home", pathMatch: "full" },
-      { path: "show/:id", component: ExamComponent },
+      { path: "show/:id", component: ExamComponent, canActivate: [ExamGuard] },
       {
         path: "creation",
         component: ExamFormComponent,

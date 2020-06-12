@@ -7,29 +7,29 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link hover-colors" routerLink="/home">Home
+      <li class="nav-item">
+        <a class="nav-link hover-colors" routerLink="/home" routerLinkActive>Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link hover-colors" routerLink="/news">News</a>
+        <a class="nav-link hover-colors" routerLink="/news" routerLinkActive>News</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link hover-colors" routerLink="/enrollment" *ngIf="loginService.isAuthenticated()">Courses</a>
+        <a class="nav-link hover-colors" routerLink="/enrollment" routerLinkActive *ngIf="loginService.isAuthenticated()">Courses</a>
       </li>
       <li class="nav-item" *ngIf="loginService.isAuthenticated()">
-        <a class="nav-link hover-colors" routerLink="/users">Users</a>
+        <a class="nav-link hover-colors" routerLink="/users" routerLinkActive>Users</a>
       </li>
       <li class="nav-item" *ngIf="loginService.isAuthenticated() && course !== null">
         <a *ngIf="course" class="nav-link hover-colors"
-          [routerLink]="['/course', course?.id]">{{ course?.courseName}}</a>
+          [routerLink]="['/course', course?.id]" routerLinkActive>{{ course?.courseName}}</a>
       </li>
       <li class="nav-item" *ngIf="loginService.isAuthenticated() && isTeacher()">
-        <a class="nav-link hover-colors" routerLink='/exam/creation'>Exam Creation</a>
+        <a class="nav-link hover-colors" routerLink='/exam/creation' routerLinkActive>Exam Creation</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link hover-colors" routerLink='/contact-us'>Contact Us</a>
+        <a class="nav-link hover-colors" routerLink='/contact-us' routerLinkActive>Contact Us</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto nav-flex-icons">
