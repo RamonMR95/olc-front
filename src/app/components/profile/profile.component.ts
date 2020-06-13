@@ -158,7 +158,10 @@ export class ProfileComponent implements OnInit {
       this.form.controls.nameUser.value,
       this.form.controls.surName.value,
       this.form.controls.email.value,
-      this.form.controls.passwordUsr.value
+      this.form.controls.passwordUsr.value,
+      this.form.controls.birthday.value,
+      this.user.photo,
+      this.user.about
     );
     await this.userService
       .updateUser(newUser, this.route.snapshot.params.id)
